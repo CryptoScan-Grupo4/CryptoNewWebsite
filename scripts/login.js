@@ -1,17 +1,23 @@
-const btCadastro = document.querySelector('.btn-cadastro')
-const btLogin = document.querySelector('.btn-login')
+const btCadastro = document.querySelector('.btn-teste')
+const btLogin = document.querySelector('.btn-teste2')
 const formCadastro = document.querySelector('.container-form.cadastro')
 const formLogin = document.querySelector('.container-form.login')
 
-btCadastro.addEventListener('click' , () => {
+btCadastro.addEventListener('click' , () => {    
     if(!formCadastro.classList.contains('formAtivo')){
         formCadastro.style.display = 'flex'
         document.querySelector('.formAtivo').classList.remove('formAtivo')
         formCadastro.classList.add('formAtivo')
         setTimeout(() => {
-           formLogin.style.display = 'none'
-        }, 300);
+           formLogin.style.display = 'none' 
+        }, 300);    
     }
+
+
+
+
+    
+
 })
 
 
@@ -21,7 +27,7 @@ btLogin.addEventListener('click' , () => {
         document.querySelector('.formAtivo').classList.remove('formAtivo')
         formLogin.classList.add('formAtivo')
         setTimeout(() => {
-            formCadastro.style.display = 'none'
+            formCadastro.style.display = 'none' 
          }, 300);
     }
 })
