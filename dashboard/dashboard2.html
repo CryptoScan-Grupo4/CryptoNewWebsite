@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - CryptoScan</title>
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="../css/dash.css" />
+    <script src="../js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" id="menu-icon">&#9776;</label>
+    <nav id="menu">
+        <label for="menu-toggle" id="menu-close"><i class="fas fa-times"></i></label>
+        <ul>
+            <li><a href="#">Gráficos</a></li>
+            <li><a href="#">Teste</a></li>
+            <li><a href="#">Sair</a></li>
+        </ul>
+    </nav>
+    <script src="script.js"></script>
+
+    <div class="container">
+        <div class="graficos-box">
+            <div class="graficos1">
+                <div class="grafico">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="graficos2">
+                <div class="grafico">
+                    <canvas id="myChart2"></canvas>
+                </div>
+                <div class="grafico">
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="graficos3">
+            <div class="grafico">
+                <canvas id="myChart4"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="myChart5"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="myChart6"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 1 grafico (HISTORICO) -->
+
+    <script>
+        const labels_historico = [
+            'Janeiro',
+            'Fevereiro',
+            'Março ',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro',
+        ];
+        const data_historico = {
+            labels: labels_historico,
+            datasets: [{
+                label: 'Temperatura (°C)',
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderColor: 'rgb(0, 0, 255)',
+                data: [30, 29, 28, 25, 22, 23, 35, 33, 28, 27, 34, 30],
+            }
+            ]
+        };
+
+        const config_historico = {
+            type: 'bar',
+            data: data_historico,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config_historico
+        );
+    </script>
+
+
+    <!-- 2 grafico (RAM) -->
+
+    <script>
+        const labels_ram = [
+            '08:00',
+            '09:00',
+            '10:00',
+            '11:00',
+            '12:00',
+            '13:00',
+            '14:00',
+            '15:00',
+            '16:00',
+            '17:00',
+            '18:00',
+        ];
+
+        const data_ram = {
+            labels: labels_ram,
+            datasets: [{
+                label: 'Uso da RAM (%)',
+                backgroundColor: 'rgb(30, 232, 44)',
+                borderColor: 'rgb(30, 232, 44)',
+                data: [80, 81, 82, 84, 83, 80, 81, 81, 79, 77, 78],
+            }
+            ]
+        };
+
+        const config_ram = {
+            type: 'line',
+            data: data_ram,
+            options: {}
+        };
+
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config_ram
+        );
+    </script>
+
+
+    <!-- 3 grafico (CPU) -->
+
+
+
+    <script>
+       const labels_cpu = [
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    ];
+
+    const data_cpu = {
+      labels: labels_cpu,
+      datasets: [{
+        label: 'Uso da CPU (%)',
+        backgroundColor: 'rgb(24, 237, 237)',
+        borderColor: 'rgb(24, 237, 237)',
+        data: [10, 11, 12, 12, 14, 12, 15, 16, 14, 15, 16],
+    }
+]
+    };
+
+    const config_cpu = {
+      type: 'line',
+      data: data_cpu,
+      options: {}
+    };
+
+    const myChart3 = new Chart(
+      document.getElementById('myChart3'),
+      config_cpu
+    );
+
+    </script>
+
+
+    <!-- graficos 4 (PLACA DE VIDEO) -->
+
+
+    <script>
+         const labels_placaDeVideo = [
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    ];
+
+        const data_placaDeVideo = {
+      labels: labels_placaDeVideo,
+      datasets: [{
+        label: 'Temperatura da Placa de Vídeo (°C)',
+        backgroundColor: 'rgb(255, 0, 255)',
+        borderColor: 'rgb(255, 0, 255)',
+        data: [30, 34, 35, 33, 30, 31,32,32,30,29,26],
+    }
+]
+    };
+
+    const config_placaDeVideo = {
+      type: 'line',
+      data: data_placaDeVideo,
+      options: {}
+    };
+
+    const myChart4 = new Chart(
+      document.getElementById('myChart4'),
+      config_placaDeVideo
+    );
+    </script>
+
+
+
+    graficos 5 (REDE)
+
+
+    <script>
+         const labels_rede = [
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    ];
+
+
+    const data_rede = {
+      labels: labels_rede,
+      datasets: [{
+        label: 'Download (Mbps/s)',
+        backgroundColor: 'rgb(252, 219, 53)',
+        borderColor: 'rgb(252, 219, 53)',
+        data: [355, 350, 352, 357, 360, 362,365,363,363,367,370],
+    },
+    {
+        label: 'Upload (Mbps/s)',
+        backgroundColor: 'rgb(00, 00, 255)',
+        borderColor: 'rgb(00, 00, 255)',
+        data: [173, 172, 175, 176, 178, 177, 179, 180, 176, 180, 190],
+    }
+]
+    };
+
+    
+    const config_rede = {
+      type: 'line',
+      data: data_rede,
+      options: {}
+    };
+
+    const myChart5 = new Chart(
+      document.getElementById('myChart5'),
+      config_rede
+    );
+
+    </script>
+
+
+    <!-- graficos 6 (DISCO) -->
+
+
+    <script>
+        const labels_disco = [
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    ];
+
+    const data_disco = {
+      labels: labels_disco,
+      datasets: [{
+        label: 'Uso do Disco (%)',
+        backgroundColor: 'rgb(113, 14, 227)',
+        borderColor: 'rgb(113, 14, 227)',
+        data: [7, 9, 8, 10, 9, 9, 11, 10, 8, 7, 8],
+    }
+]
+    };
+
+    const config_disco = {
+      type: 'line',
+      data: data_disco,
+      options: {}
+    };
+
+    const myChart6 = new Chart(
+      document.getElementById('myChart6'),
+      config_disco
+    );
+    </script>
+
+</body>
+
+</html>

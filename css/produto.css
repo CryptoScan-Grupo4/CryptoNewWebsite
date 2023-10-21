@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+.Produto {
+  background-color: #000000;
+  width: 100%;
+}
+
+.cards-1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cards-2 {
+  margin-top: 49px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.card-produto {
+  display: flex;
+  background-color: #2e2e2e;
+  width: 45vw;
+  height: 34vh;
+  /* altura*/
+  margin-left: 8px;
+  border-radius: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-produto1 {
+  display: flex;
+  background-color: #2e2e2e;
+  width: 45vw;
+  height: 34vh;
+  /* altura*/
+  margin-top: 69px;
+  border-radius: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-produto span{
+  color: #f0bb0bc9;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-produto1 span{
+  color: #f0bb0bc9;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-produto p {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  color: #ffffff;
+  width: 40vw;
+  text-align: justify;
+}
+
+.card-produto1 p {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  color: #ffffff;
+  width: 40vw;
+  text-align: justify;
+}
+
+/* Tentativa de responsividade da parte de Produto */
+
+@media (max-width: 999px) {
+  .Produto {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .cards-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cards-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-produto {
+    display: flex;
+    background-color: #2e2e2e;
+    width: 70%;
+    height: 280.14px;
+    border-radius: 10px;
+    justify-content: center;
+
+  }
+
+  .card-produto span{
+    font-size: 25px;
+  }
+
+  .card-produto1 {
+    display: flex;
+    background-color: #2e2e2e;
+    width: 70%;
+    height: 280.14px;
+    margin-top: 60px;
+    border-radius: 10px;
+    justify-content: center;
+  }
+
+  .card-produto p {
+    display: flex;
+    margin-left: 14px;
+    margin-right: 10px;
+    font-size: 12px;
+    align-items: center;
+    color: #ffffff;
+    width: 85%;
+    text-align: left;
+  }
+
+  .card-produto1 p {
+    display: flex;
+    margin-left: 14px;
+    margin-right: 10px;
+    font-size: 12px;
+    align-items: center;
+    color: #ffffff;
+    width: 85%;
+    text-align: left;
+  }
+}

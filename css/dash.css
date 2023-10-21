@@ -1,0 +1,309 @@
+body {
+  background-color: #15161e;
+  overflow: hidden;
+
+}
+
+.div-global{
+  display: flex;
+}
+
+aside{
+  background-color: #24252f;
+  margin-right: 40px;
+}
+
+.container_centralizado{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+aside .container_centralizado{
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 99vh;
+  flex-direction: column;
+  /* Altere para row para colocar "graficos3" ao lado de "graficos2" */
+  background-color: #15161e;
+
+}
+
+.indices {
+  display: flex;
+}
+
+.indice_bom {
+  border-radius: 5px;
+  background-color: #17cd27b8;
+  color: white;
+  padding: 7px;
+  margin-right: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.indice_ruim {
+  border-radius: 5px;
+  background-color: #da1313bd;
+  color: white;
+  padding: 7px;
+  margin-right: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.graficos {
+  display: flex;
+}
+
+.graficos-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.graficos1 {
+  margin-right: 10px;
+  /* Adicione um espaçamento entre "graficos1" e "graficos2" */
+}
+
+/* .graficos2 {
+  display: flex;
+  margin-right: 10px; /* Adicione um espaçamento entre "graficos2" e "graficos3" 
+} */
+
+.graficos3 {
+  display: flex;
+  flex-direction: row;
+}
+
+.grafico {
+  margin: 10px;
+  /* Adicione um espaçamento entre os gráficos */
+}
+
+#myChart2 {
+  padding: 5px 10px;
+  border-radius: 10px;
+  height: 30vh;
+  width: 35vw;
+  background-color: #24252f;
+}
+
+#myChart3 {
+  padding: 5px 10px;
+  border-radius: 10px;
+  height: 30vh;
+  width: 35vw;
+  background-color: #24252f;
+}
+
+#myChart4 {
+  padding: 5px 10px;
+  border-radius: 10px;
+  height: 30vh;
+  width: 35vw;
+  background-color: #24252f;
+}
+
+#myChart6 {
+  padding: 5px 10px;
+  border-radius: 10px;
+  height: 30vh;
+  width: 35vw;
+  background-color: #24252f;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1vh 5vh;
+  position: fixed;
+}
+
+.menu-hamburguer {
+  background-color: #1d1e27;
+  width: 35vh;
+  height: 100vh;
+  position: fixed;
+  box-shadow: 3px 3px 3px 3px #00000069, 0 100px 300px -15px #00000083 inset;
+  transition: 0.6s;
+  z-index: 6;
+  overflow-y: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-x: hidden;
+  margin-left: -40vh;
+}
+
+.menu-hamburguer a {
+  color: white;
+  text-decoration: none;
+}
+
+.imagem-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5vh;
+  margin-top: -8vh;
+}
+
+.logo {
+  display: flex;
+  margin-right: 85vh;
+}
+
+.logo img {
+  display: flex;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.voltar {
+  width: 5vh;
+  height: 5vh;
+  margin-left: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6vh;
+  transition: 0.5s;
+  margin-top: 3vh;
+}
+
+.voltar img {
+  cursor: pointer;
+  width: 6vh;
+}
+
+.voltar a:hover {
+  transform: scale(1);
+}
+
+
+:root {
+  --speed: 200ms;
+}
+
+.menu-primary-enter {
+  transform: translateX(-110%);
+}
+
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-primary-exit {
+  position: absolute;
+  top: 0;
+}
+
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit {
+  position: absolute;
+}
+
+.menu-secondary-exit-active {
+  transform: translateX(300px);
+  transition: all var(--speed) ease;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar-wrapper {
+  padding: 0 0;
+  overflow: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.089);
+  width: 300px;
+  min-height: 100vh;
+  position: relative;
+  will-change: width;
+}
+
+.menu {
+  overflow: hidden;
+  transition: all linear 0.4s;
+  padding: 10px;
+}
+
+.menu-item {
+  width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 250ms;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.1rem;
+  border-radius: 11px;
+  color: white;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.055);
+  color: #ffd700;
+  cursor: pointer;
+}
+
+.menu-item>.icon.class {
+  background-color: #48ff00;
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 1rem;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item>.icon {
+  background-color: #48ff00;
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 1rem;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item>.label {
+  flex: 1;
+}

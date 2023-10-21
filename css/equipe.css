@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+
+.integrantes {
+    background-color: black;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .integrantes h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .integrantes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color: #2e2e2e4f;
+    margin-top: 20px;
+    width: 90%;
+    border-radius: 15px;
+    padding: 25px 0;
+  }
+
+  .img-linkedin{
+    width: 15%;
+    height: 9vh;
+  }
+  
+  .img-git{
+    width: 14%;
+    height: 8vh;
+    margin-left: 10px;
+    margin-bottom: 3px;
+  }
+  
+  
+  /* Estilos para a primeira linha de integrantes */
+  .integrantes-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  /* Estilos para cada integrante */
+  .integrante {
+    text-align: center;
+    flex: 1;
+    max-width: 390px;
+    margin-bottom: 20px;
+  }
+  
+  .imagem-integrante {
+    object-fit: cover;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    box-shadow: 19px 2px 6px -2px #00000085;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .integrante p {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+
+  @media (max-width: 999px) {
+
+    .integrantes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      background-color: #2e2e2e4f;
+      margin-top: 20px;
+      width: 90%;
+      border-radius: 15px;
+      padding: 25px 0;
+    }
+
+    .integrante {
+      text-align: center;
+      flex: 1;
+      max-width: 390px;
+      margin-bottom: 20px;
+    }
+
+    .img-linkedin {
+      width: 15%;
+      height: 6vh;
+    }
+
+    .img-git{
+      width: 14.6%;
+      height: 5.6vh;
+      margin-left: 10px;
+      margin-bottom: 3px;
+    }
+
+
+    .integrantes-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      flex-direction: column;
+      flex-wrap: nowrap
+    }
+  }
+  

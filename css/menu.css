@@ -1,0 +1,67 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para o menu hamburger */
+#menu-toggle {
+    display: none;
+}
+
+#menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+#menu-icon::before {
+    content: "\2630"; /* Código unicode para o ícone de menu */
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Esconde o menu inicialmente */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s ease;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 20px;
+}
+
+#menu ul li {
+    margin-bottom: 20px;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+#menu-toggle:checked + #menu {
+    left: 0; /* Mostra o menu quando o checkbox está marcado */
+}
+
+#menu-toggle:checked + #menu + #menu-icon::before {
+    content: "\2715"; /* Código unicode para o ícone de fechar (X) */
+}
+
+#menu ul li a:hover {
+    color: #ff7f50; /* Cor de destaque ao passar o mouse sobre os itens do menu */
+}

@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model funcionario {
+  idFuncionario    Int   @id  @default(autoincrement())
+  nomeFuncionario  String @db.VarChar(45)
+  cpfFuncionario   String @db.Char(14)
+  emailFuncionario String @db.VarChar(45)
+  Senha            String @db.VarChar(45)
+  fkTipoConta      Int
+  fkEmpresa        Int
+
+  @@index([fkEmpresa], map: "fkEmpresa")
+  @@index([fkTipoConta], map: "fkTipoConta")
+}
+
+model componente {
+  idComponente     Int     @id @default(autoincrement())
+  modeloComponente String? @db.VarChar(45)
+  tipoComponente   String? @db.VarChar(45)
+  serialComponente String? @db.VarChar(45)
+}
+
+model computador {
+  idComputador             Int     @default(autoincrement())
+  fkSetor                  Int
+  fkFuncionarioResponsavel Int?
+  fkTipoConta              Int?
+  serialComputador         String? @db.VarChar(45)
+
+  @@id([idComputador, fkSetor])
+  @@index([fkFuncionarioResponsavel], map: "fkFuncionarioResponsavel")
+  @@index([fkSetor], map: "fkSetor")
+  @@index([fkTipoConta], map: "fkTipoConta")
+}
+
+model empresa {
+  idEmpresa   Int     @id @default(autoincrement())
+  nomeEmpresa String? @db.VarChar(45)
+  telEmpresa  String? @db.Char(10)
+  cepEmpresa  String? @db.Char(9)
+  numEndereco String? @db.VarChar(10)
+  cpnjEmpresa String? @db.VarChar(45)
+  fkToken     Int?
+
+  @@index([fkToken], map: "fkToken")
+}
+
+model setor {
+  idSetor   Int     @default(autoincrement())
+  Andar     String? @db.VarChar(45)
+  fkEmpresa Int
+
+  @@id([idSetor, fkEmpresa])
+  @@index([fkEmpresa], map: "fkEmpresa")
+}
+
+model setup {
+  idSetup      Int     @default(autoincrement())
+  fkComputador Int
+  fkComponente Int
+  fkSetor      Int
+  StatuSetup   String? @db.VarChar(20)
+
+  @@id([idSetup, fkComponente, fkComputador, fkSetor])
+  @@index([fkComponente], map: "fkComponente")
+  @@index([fkComputador], map: "fkComputador")
+  @@index([fkSetor], map: "fkSetor")
+}
+
+model tipoconta {
+  idTipoConta Int     @id @default(autoincrement())
+  tipoConta   String? @db.VarChar(45)
+}
+
+model token {
+  idToken     Int      @id @default(autoincrement())
+  token       String?  @db.VarChar(45)
+  dataEmitida DateTime @default(now()) @db.Timestamp(0)
+}

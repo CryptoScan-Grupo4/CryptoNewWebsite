@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="nav-container" id="nav">
+      <img class="logo-mobile" src="img/logo.png" alt="">
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="index.html#home">Home</a>
+        </li>
+        <li>
+          <a href="index.html#produto">Produto </a>
+        </li>
+        <li class="div-logo">
+          <img class="logo" src="img/Logo - Nome.png" alt="">
+        </li>
+
+        <li>
+          <a href="index.html#equipe">Equipe</a>
+        </li>
+        <li>
+          <a href="login.html">Login </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="pageContainer">
+    <div class="container-form formAtivo login">
+      <div class="mainlogin">
+        <div class="inputsContainer">
+          <p class="titulo">Login</p>
+
+          <label for="Email">Email:</label>
+          <input data-aos="fade-up" type="email" name="Email" id="loginEmail_input" placeholder="empresa@email.com" />
+
+          <label for="Senha">Senha:</label>
+          <img class="icon-input" src="" alt="">
+          <input type="password" id="loginSenha_input" placeholder="*******">
+          <div onclick="senha()" style="cursor:pointer;">
+          </div>
+          <button class="btn-entrar" onclick="loginFuncionario(loginEmail_input.value, loginSenha_input.value)">
+            Entrar
+          </button>
+        </div>
+
+        <div class="btn-cadastro">
+          <p>Cadastro</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="container-form cadastro">
+      <div class="maincadastro">
+        <div class="btn-login">
+          <p>Login</p>
+        </div>
+
+        <div class="registerSideContainer">
+          <div class="inputsContainer">
+            <p class="titulo2">Cadastro</p>
+            <label for="nome_input">Nome:</label>
+            <input data-aos="fade-up" type="Nome" name="Nome" id="nome_input" placeholder="Insira seu nome" />
+
+            <label for="email_input">Email:</label>
+            <input data-aos="fade-up" type="email" name="Email" id="rgtEmail_input" placeholder="Insira seu email" />
+
+            <label for="cpf_input">CPF:</label>
+            <input data-aos="fade-up" type="text" name="cpf" id="cpf_input" placeholder="000.000.000-00" />
+          </div>
+        </div>
+
+
+        <div class="inputsContainer">
+          <label for="senha_input">Senha:</label>
+          <input type="password" id="rgtSenha_input" placeholder="*******" />
+
+          <label for="repetir_senha_input">Repetir Senha:</label>
+          <img class="icon-input" src="" alt="">
+          <input type="password" id="repetir_senha_input" placeholder="*******" />
+
+          <label for="cod_empresa">Código da empresa:</label>
+          <input type="text" id="cod_empresa" placeholder="Insira o código da empresa" />
+        </div>
+        <div class="inputsContainer">
+
+          <button class="btn-cadastrar"
+            onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(cod_empresa.value))">
+            Cadastrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+<script src="scripts/mobile-navbar.js"></script>
+<script src="scripts/login.js"></script>
+<script src="scripts/mobile-navbar.js"></script>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script>
+  async function cadastrarFuncionario(nome, email, senha, repetirSenha, cpf, codEmp) {
+  if (senha === repetirSenha) {
+    await axios.post('http://localhost:3000/cadastrarFuncionario', {
+      nome: nome,
+      email: email,
+      senha: senha,
+      cpf: cpf,
+      codEmp: codEmp
+    }).then((response) => {
+      console.log(response.data);
+    })
+
+    if(!formLogin.classList.contains('formAtivo')){
+        formLogin.style.display = 'flex'
+        document.querySelector('.formAtivo').classList.remove('formAtivo')
+        formLogin.classList.add('formAtivo')
+        setTimeout(() => {
+            formCadastro.style.display = 'none'
+         }, 300);
+    }
+  } else {
+    alert("As senhas não estão iguais")
+  }
+}
+
+async function loginFuncionario(email, senha) {
+  if ((email !== "" && senha !== "") && (email !== undefined && senha !== undefined)) {
+   await axios.get('http://localhost:3000/funcionario', {
+        email: email,
+        senha: senha
+    }).then((response) => {
+      console.log(response);
+      window.location = './dashboard/dashboardComponentes.html'
+    }).catch((error) => {
+      console.error(error);
+    })
+  } else {
+    alert("Insira o email e a senha corretamente")
+  }
+}
+</script>
+</html>
+
