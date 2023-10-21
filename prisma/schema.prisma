@@ -8,7 +8,7 @@ datasource db {
 }
 
 model funcionario {
-  idFuncionario    Int   @id  @default(autoincrement())
+  idFuncionario    Int    @id @default(autoincrement())
   nomeFuncionario  String @db.VarChar(45)
   cpfFuncionario   String @db.Char(14)
   emailFuncionario String @db.VarChar(45)
@@ -83,4 +83,17 @@ model token {
   idToken     Int      @id @default(autoincrement())
   token       String?  @db.VarChar(45)
   dataEmitida DateTime @default(now()) @db.Timestamp(0)
+}
+
+model medida {
+  idMedida       Int      @default(autoincrement())
+  usoProcessador Float?   @db.Float
+  usoRam         Float?   @db.Float
+  usoDisco       Float?   @db.Float
+  dataMedida     DateTime @default(now()) @db.Timestamp(0)
+  unidadeMedida  String?  @db.VarChar(45)
+  fkSetup        Int
+
+  @@id([idMedida, fkSetup])
+  @@index([fkSetup], map: "fkSetup")
 }
