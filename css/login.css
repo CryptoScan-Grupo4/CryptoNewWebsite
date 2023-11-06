@@ -150,7 +150,6 @@ input {
 
 .btn-entrar {
   width: 54%;
-  height: 5vh;
   text-align: center;
   display: block;
   margin-top: 11px;
@@ -177,14 +176,14 @@ input {
 .btn-teste{
   background-color:#f0b90b;
   color:black;
-  width: 37vw;
+  width: 35vw;
   height: 57px;
   transform: rotate(90deg);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 48%;
+  bottom: 44%;
   left: 46%;
   border-radius: 15px;
   transition: 0.7s ease;
@@ -234,7 +233,7 @@ input {
   backdrop-filter: blur(10px);
   gap: 20px;
   transition: all 300ms;
- 
+
 }
 
 
@@ -260,9 +259,9 @@ input {
   display: flex;
   flex-direction: column;
   position: relative;
-  bottom: 71.5%;
-  left: 58%
-  
+  bottom: 64.5%;
+  left: 56%;
+
 }
 
 .campos2 input{
@@ -280,9 +279,8 @@ input {
 
 
 .btn-cadastrar{
-  width: 54%;
-  height: 5vh;
   text-align: center;
+  width: 54%;
   display: block;
   outline: none;
   color: #f0b90b;
@@ -292,10 +290,9 @@ input {
   transition: 0.8s ease;
   font-weight: 400;
   font-size: 28px;
-  margin-left: 24%;
+  margin-left: 16.5rem;
   position: relative;
-  bottom: 86%;
-
+  bottom: 72%;
 }
 
 
@@ -312,15 +309,15 @@ input {
 .btn-teste2{
   background-color:#2e2e2e57;
   color: #f0b90b;
-  width: 54.8%;
+  width: 53%;
   height: 59px;
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 113.5%;
-  right: 24.8%;
+  bottom: 100%;
+  right: 24.4%;
   border-radius: 15px;
   transition: 0.7s ease;
   cursor: pointer;
@@ -391,12 +388,12 @@ input {
     opacity: 0;
     transition: all 300ms;
   }
-  
+
   .formAtivo{
     transition: all 300ms;
     opacity: 1 !important;
   }
-  
+
 
   .mainlogin {
     border-radius: 10px;
@@ -413,7 +410,7 @@ input {
     gap: 20px;
     transition: all 300ms;
 }
-  
+
 
   .titulo {
     color: #f0b90b;
@@ -423,26 +420,26 @@ input {
     top: 0%;
     left: 16px;
   }
-  
+
   .campos {
     width: 50%;
     position: relative;
     right: 17%;
     top: 6%;
   }
-  
-  
+
+
   label {
     font-size: 1.3rem;
     font-weight: 500;
     color: #f0b90b;
   }
-  
+
   .input-div {
     width: 100%;
     position: relative
   }
-  
+
   input {
     width: 100%;
     border: none;
@@ -452,10 +449,10 @@ input {
     font-size: 1.1rem;
     transition: all .25s ease-in-out;
     margin-bottom: 23px;
-  
+
   }
-  
-  
+
+
   .btn-entrar {
     width: 54%;
     height: 5vh;
@@ -472,7 +469,7 @@ input {
     font-weight: 400;
     font-size: 28px;
   }
-  
+
   .btn-entrar:hover {
     color: #000000;
     background-color: #f0bb0bd7;
@@ -480,8 +477,8 @@ input {
     transition: 0.8s ease;
     box-shadow: 20px 9px 17px 5px #000000;
   }
-  
-  
+
+
   .btn-teste{
     background-color:#f0b90b !important;
     color:black !important;
@@ -498,20 +495,20 @@ input {
     transition: 0.7s ease !important;
     cursor: pointer !important;
   }
-  
-  
+
+
   .btn-teste:hover{
     background-color: #2e2e2e57 !important;
     color: #f0b90b !important;
     transition: 0.7s ease !important;
   }
-  
+
   .btn-teste p{
     font-size: 40px !important;
   }
-  
-  
-  
+
+
+
   .titulo2 {
     color: #f0b90b;
     font-size: 47px;
@@ -520,8 +517,8 @@ input {
     left: 28%;
     width: 30%;
   }
-  
-  
+
+
   .container-form.cadastro{
     display: none;
     justify-content: center;
@@ -529,7 +526,7 @@ input {
     opacity: 0;
     transition: all 300ms;
   }
-  
+
   .maincadastro {
     border-radius: 10px;
     background-color: #2e2e2e57;
@@ -542,10 +539,10 @@ input {
     backdrop-filter: blur(10px);
     gap: 20px;
     transition: all 300ms;
-   
+
   }
-  
-  
+
+
   .campos1 {
     width: 43%;
     position: relative;
@@ -553,7 +550,7 @@ input {
     right: 9%;
 
   }
-  
+
   .campos1 input{
     width: 47%;
     border: none;
@@ -564,8 +561,8 @@ input {
     transition: all .25s ease-in-out;
     margin-bottom: 49px;
   }
-  
-  
+
+
   .campos2{
     width: 43%;
     display: flex;
@@ -573,9 +570,9 @@ input {
     position: relative;
     bottom: 57.7%;
     left: 60%
-    
+
   }
-  
+
   .campos2 input{
     width: 47%;
     border: none;
@@ -586,10 +583,10 @@ input {
     transition: all .25s ease-in-out;
     margin-bottom: 49px;
   }
-  
-  
-  
-  
+
+
+
+
   .btn-cadastrar{
     width: 54%;
     height: 5vh;
@@ -606,10 +603,10 @@ input {
     margin-left: 24%;
     position: relative;
     bottom: 74%;
-  
+
   }
-  
-  
+
+
   .btn-cadastrar:hover {
     color: #000000;
     background-color: #f0bb0bd7;
@@ -617,9 +614,9 @@ input {
     transition: 0.8s ease;
     box-shadow: 20px 9px 17px 5px #000000;
   }
-  
-  
-  
+
+
+
   .btn-teste2{
     background-color:#f0b90b;
     color: #000000;
@@ -636,17 +633,17 @@ input {
     transition: 0.7s ease !important;
     cursor: pointer !important;
   }
-  
-  
+
+
   .btn-teste2:hover{
     background-color: #2e2e2e;
     color: #f0b90b;
     transition: 0.7s ease !important;
   }
-  
+
   .btn-teste2 p{
     font-size: 40px !important;
   }
-  
+
 
 }

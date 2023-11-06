@@ -51,7 +51,7 @@
         <label for="Email">Email:</label>
         <div class="input-div">
 
-          <input data-aos="fade-up" type="email" name="Email" id="email_input" placeholder="empresa@email.com">
+          <input data-aos="fade-up" type="email" name="Email" id="loginEmail_input" placeholder="empresa@email.com">
 
           </input>
 
@@ -66,13 +66,15 @@
         <label for="Senha">Senha:</label>
         <div class="input-div">
           <img class="icon-input" src="" alt="">
-          <input type="password" id="senha_input" placeholder="*******">
+          <input type="password" id="loginSenha_input" placeholder="*******">
           <div onclick="senha()" style="cursor:pointer;">
           </div>
         </div>
       </div>
 
-      <div class="btn-entrar" href="">Entrar</div>
+      <button class="btn-entrar" onclick="loginFuncionario(loginEmail_input.value, loginSenha_input.value)">
+        Entrar
+      </button>
 
       <div class="btn-teste cadastro">
         <p>Cadastro</p>
@@ -91,22 +93,22 @@
 
         <label for="Nome">Nome:</label>
         <div class="input-div">
-          <input data-aos="fade-up" type="Nome" name="Nome" id="nome_input" placeholder="Exemplo ltda">
+          <input data-aos="fade-up" type="Nome" name="Nome" id="nome_input" placeholder="Insira seu nome">
           </input>
           <br>
         </div>
 
         <label for="Email">Email:</label>
         <div class="input-div">
-          <input data-aos="fade-up" type="email" name="Email" id="email_input" placeholder="empresa@email.com">
+          <input data-aos="fade-up" type="email" name="Email" id="rgtEmail_input" placeholder="empresa@email.com">
           </input>
           <br>
         </div>
 
 
-        <label for="cep">CEP:</label>
+        <label for="CPF">CPF:</label>
         <div class="input-div">
-          <input data-aos="fade-up" type="cep" name="Cep" id="cep_input" placeholder="00000-000">
+          <input data-aos="fade-up" type="CPF" name="CPF" id="cpf_input" placeholder="000.000.000-00">
           </input>
           <br>
         </div>
@@ -117,17 +119,11 @@
       <div class="campos2">
 
 
-        <label for="cnpj">CNPJ:</label>
-        <div class="input-div">
-          <input data-aos="fade-up" type="email" name="Email" id="email_input" placeholder="XX.XXX.XXX/0001-XX">
-          </input>
-          <br>
-        </div>
 
 
         <label for="Senha">Senha:</label>
         <div class="input-div">
-          <input type="password" id="senha_input" placeholder="*******">
+          <input type="password" id="rgtSenha_input" placeholder="*******">
         </div>
 
 
@@ -136,13 +132,23 @@
           <img class="icon-input" src="" alt="">
           <input type="password" id="repetir_senha_input" placeholder="*******">
         </div>
+
+        <label for="codEmp">Código da empresa:</label>
+        <div class="input-div">
+          <input data-aos="fade-up" type="codEmp" name="codEmp" id="codEmp_input" placeholder="Insira o código da empresa">
+          </input>
+          <br>
+        </div>
       </div>
 
       <div class="btn-teste2 login">
         <p>Login</p>
       </div>
 
-      <a class="btn-cadastrar" href="">Cadastrar</a>
+      <button class="btn-cadastrar"
+            onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value))">
+            Cadastrar
+          </button>
 
     </div>
 
