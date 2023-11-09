@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Representante</title>
+  <link rel="stylesheet" href="css/cadastroRepresentante.css">
+  <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+
+<body>
+  <header>
+
+  </header>
+
+  <div class="maincadastro">
+    <p class="titulo2">Finalizar o Cadastro</p>
+    <div class="campos1">
+
+      <label for="Nome">Nome Representante: </label>
+      <div class="input-div">
+        <input data-aos="fade-up" type="Nome" name="Nome" id="nome_input" placeholder="Insira seu nome completo">
+        </input>
+        <br>
+      </div>
+
+      <label for="Email">Email:</label>
+      <div class="input-div">
+        <input data-aos="fade-up" type="email" name="Email" id="rgtEmail_input" placeholder="representante@email.com">
+        </input>
+        <br>
+      </div>
+
+      <label for="RG">RG:</label>
+      <div class="input-div">
+        <input type="rg" name="rg" id="rg_input" placeholder="00000000">
+        </input>
+        <br>
+      </div>
+
+
+      <label for="CPF">CPF:</label>
+      <div class="input-div">
+        <input data-aos="fade-up" type="CPF" name="CPF" id="cpf_input" placeholder="000.000.000-00">
+        </input>
+        <br>
+      </div>
+
+
+    </div>
+
+
+    <div class="campos2">
+
+      <label for="Senha">Senha:</label>
+      <div class="input-div">
+        <input type="password" id="rgtSenha_input" placeholder="*******">
+      </div>
+
+
+      <label for="Senha">Repetir Senha:</label>
+      <div class="input-div">
+        <img class="icon-input" src="" alt="">
+        <input type="password" id="repetir_senha_input" placeholder="*******">
+      </div>
+
+      <label for="codEmp">Código da empresa:</label>
+      <div class="input-div">
+        <input data-aos="fade-up" type="codEmp" name="codEmp" id="codEmp_input"
+          placeholder="Insira o código da empresa">
+        </input>
+        <br>
+      </div>
+    </div>
+
+
+    <div class="container-select">
+      <label class="label-select" for="tipoConta">Tipo da Conta:</label>
+      <select name="tipoConta" id="tipoConta">
+        <option value="0">--Selecione o tipo da conta--</option>
+        <option value="1">CEO</option>
+        <option value="2">Representante</option>
+        <option value="3">Funcionário</option>
+      </select>
+    </div>
+
+    <button class="btn-cadastrar"
+      onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value))">
+      Cadastrar
+    </button>
+
+  </div>
+</body>

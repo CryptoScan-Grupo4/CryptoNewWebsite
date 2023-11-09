@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+body {
+  background-color: #0D0D0D;
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Arvo", serif;
+}
+
+
+.maincadastro {
+  border-radius: 10px;
+  background-color: #2e2e2e57;
+  width: 70%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-left: 15%;
+  backdrop-filter: blur(10px);
+  gap: 4px;
+  transition: all 300ms;
+
+}
+
+.titulo2 {
+  color: #f0b90b;
+  font-size: 47px;
+  font-weight: 400;
+  position: relative;
+  left: 252px;
+  top: 5px;
+  width: 50%;
+}
+
+
+label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #f0b90b;
+}
+
+.campos1 {
+  width: 50%;
+  position: relative;
+  top: 6%;
+  left: 10%;
+
+}
+
+.campos1 input {
+  width: 47%;
+  border: none;
+  padding: 1rem 2rem 1rem 1.2rem;
+  height: 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: all .25s ease-in-out;
+  margin-bottom: 20px;
+}
+
+
+
+.campos2 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 62%;
+  left: 61%;
+
+}
+
+.campos2 input {
+  width: 47%;
+  border: none;
+  padding: 1rem 2rem 1rem 1.3rem;
+  height: 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: all .25s ease-in-out;
+  margin-bottom: 20px;
+
+}
+
+
+.container-select{
+  width: 100%;
+  height: 40%;
+  position: relative;
+  left: 49%;
+  bottom: 62%;
+}
+
+
+.label-select{
+  color: #f0b90b;
+  position: relative;
+  left: 12%;
+  bottom: 6px;
+}
+
+option{
+  color: #2e2e2e;
+}
+
+#tipoConta{
+  width: 30%;
+  padding: 0.3rem 0rem 1rem 1.2rem;
+  position: relative;
+  top: 48%;
+  outline: none;
+  border-radius: 10px;
+  right: 35px;
+}
+
+.btn-cadastrar {
+  border: none;
+  text-align: center;
+  width: 54%;
+  display: block;
+  outline: none;
+  color: #f0b90b;
+  background-color: #2e2e2e;
+  padding: 11px 20px;
+  border-radius: 7px;
+  transition: 0.8s ease;
+  font-weight: 400;
+  font-size: 28px;
+  margin-left: 14rem;
+  position: relative;
+  bottom: 55%;
+}
+
+
+.btn-cadastrar:hover {
+  color: #000000;
+  background-color: #f0bb0bd7;
+  border-radius: 10px;
+  transition: 0.8s ease;
+  box-shadow: 20px 9px 17px 5px #000000;
+}
