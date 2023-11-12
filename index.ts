@@ -44,16 +44,20 @@ app.post('/cadastrarFuncionario', async (req, res) => {
 })
 
 app.get('/funcionario', async (req, res) => {
-  const email = req.body.email
-  const senha = req.body.senha
+  const email: any = req.query.email
+  const senha: any = req.query.senha
 
-  const users = await prisma.funcionario.findFirst({
-    where: {
-      emailFuncionario: email,
-      Senha: senha
-    }
-  })
-  res.status(200).send(users)
+  try {
+    const users = await prisma.funcionario.findFirst({
+      where: {
+        emailFuncionario: email,
+        Senha: senha
+      }
+    })
+    res.status(200).send(users)
+  } catch (error) {
+    res.status(404).json(error)
+  }
 })
 
 app.patch('/esqueciSenha/:id', async (req, res) => {

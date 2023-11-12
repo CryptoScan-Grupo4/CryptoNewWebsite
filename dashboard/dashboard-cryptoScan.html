@@ -78,7 +78,7 @@
                     <li><a class="link_name" href="#">Chart</a></li>
                 </ul>
             </li>
-            
+
             <li>
                 <a href="#">
                     <i class='bx bx-history'></i>
@@ -100,11 +100,9 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../img/user.jpg" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">João Lucas</div>
-                        <div class="job">Empresário</div>
+                        <div class="profile_name" id="profile_name"></div>
                     </div>
                     <i class='bx bx-log-out'></i>
                 </div>
@@ -135,9 +133,9 @@
                 <div class="titulo-card">
                     <h1>Porcentagem de Uso da Rede</h1>
                 </div>
-                
+
                 <p id="porcentagem-rede">12 <span>%</span></p>
-                
+
                 <div id="qtd-recebidos">
                     Recebidos:
                     <span>
@@ -174,7 +172,7 @@
                 <caption class="titulo-tabela">
                     Desempenho das Máquinas
                 </caption>
-                
+
                 <thead>
                     <tr>
                         <th>Setor</th>
@@ -227,9 +225,9 @@
                     <td>OK</td>
 
                 </tr>
-                
 
-            
+
+
 
             </table>
         </div>
@@ -257,4 +255,5 @@
     sidebarBtn.addEventListener("click", () => {
         sidebar.classList.toggle("close");
     });
+    profile_name.innerHTML = sessionStorage.NOME_FUNCIONARIO
 </script>
