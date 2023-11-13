@@ -1,18 +1,18 @@
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
 
-    <head>
-        <meta charset="UTF-8">
-        <title> Drop Down Sidebar Menu | CodingLab </title>
-        <script src="../js/menu.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="../css/dash.css">
-        <!-- Boxiocns CDN Link -->
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <title> Setor 1 Máquina 1 </title>
+    <script src="../js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dash.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/logo.png">
+</head>
     <body>
         <div class="sidebar close">
             <div class="logo-details">
@@ -134,45 +134,164 @@
                 </li>
             </ul>
         </div>
-        <section class="home-section">
-            <div class="home-content">
-                <i class='bx bx-menu'></i>
-                <div class="fora-da-sidebar">
-                    <!-- <div class="indices">
-                        <div class="indice_bom">
-                            <h1>GPU</h1>
-                            <span><b>Status: </b>Boa</span>
-                        </div>
-                        <div class="indice_bom">
-                            <h1>RAM</h1>
-                            <span><b>Status: </b>Boa</span>
-                        </div>
-                        <div class="indice_bom">
-                            <h1>CPU</h1>
-                            <span><b>Status: </b>Boa</span>
-                        </div>
-                        <div class="indice_bom">
-                            <h1>GPU</h1>
-                            <span><b>Status: </b>Boa</span>
-                        </div>
-                    </div> -->
-                    <span>setor 1, máquina 2</span>
-                    <div class="graficos">
-                        <div class="graficos_de_cima">
-                            <div class="grafico">
+        <ul class="nav-links">
+            <li>
+                <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Dashboard</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 1</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 1</a></li>
+                    <li><a href="dashboardMonitoramento.html">Máquina 1</a></li>
+                    <li><a href="dashboardMonitoramentoRuim.html">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 2</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 2</a></li>
+                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                    <li><a href="#">Máquina 4</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Funcionários</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Funcionários</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">Chart</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Chart</a></li>
+                </ul>
+            </li>
+            <!-- <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-plug'></i>
+                        <span class="link_name">Plugins</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Plugins</a></li>
+                    <li><a href="#">UI Face</a></li>
+                    <li><a href="#">Pigments</a></li>
+                    <li><a href="#">Box Icons</a></li>
+                </ul>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class='bx bx-compass'></i>
+                    <span class="link_name">Explore</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Explore</a></li>
+                </ul>
+            </li> -->
+            <li>
+                <a href="dashboardHistorico.html">
+                    <i class='bx bx-history'></i>
+                    <span class="link_name">Histórico</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="dashboardHistorico.html">Histórico</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../img/user.jpg" alt="profileImg">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">João Lucas</div>
+                        <div class="job">Empresário</div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <div class="fora-da-sidebar">
+
+                <div class="container-avisos">
+                    <div class="setor">Você está em: <br> Setor 1 <br> Máquina 1</div>
+
+                    <span style="color: white;"><b>Uso da RAM</b></span>
+                    <div class="status-geral"> <br> <b class="uso-componente">7,12 GB</b> <br> <br>Disponível: 8,0 GB</div>
+
+                    <span style="color: white;"><b>Uso da GPU</b></span>
+                    <div class="status-geral"> <br> <b class="uso-componente">1,4 GB</b> <br> <br>Disponível: 3,9 GB</div>
+
+                    <span style="color: white;"><b>Uso da CPU</b></span>
+                    <div class="status-geral"> <br> <b class="uso-componente">263</b> <br> <br>Processos Ativos</div>
+
+                    <span style="color: white;"><b>Uso do Disco</b></span>
+                    <div class="status-geral"> <br> <b class="uso-componente">178 GB</b> <br> <br>Disponível: 220 GB</div>
+
+                </div>
+
+                <div class="graficos">
+                    <div class="graficos_da_esquerda">
+                        <div class="grafico">
+                            <span>Uso da RAM nas Últimas 8 Horas</span>
+                            <div>
                                 <canvas id="myChart2"></canvas>
                             </div>
-                            <div class="grafico">
-                                <canvas id="myChart3"></canvas>
-                            </div>
                         </div>
-                        <div class="graficos_de_baixo">
-                            <div class="grafico">
-                                <canvas id="myChart4"></canvas>
-                            </div>
-                            <div class="grafico">
-                                <canvas id="myChart6"></canvas>
-                            </div>
+                        <div class="grafico">
+                            <span>Uso da CPU nas Últimas 8 Horas</span>
+                            <canvas id="myChart3"></canvas>
+                        </div>
+                    </div>
+                    <div class="graficos_da_direita">
+                        <div class="grafico">
+                            <span>Uso da GPU nas Últimas 8 Horas</span>
+                            <canvas id="myChart4"></canvas>
+                        </div>
+                        <div class="grafico">
+                            <span>Uso do Disco nas Últimas 8 Horas</span>
+                            <canvas id="myChart6"></canvas>
                         </div>
                     </div>
                 </div>

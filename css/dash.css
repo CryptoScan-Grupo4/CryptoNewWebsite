@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
 body {
   background-color: #15161e;
   overflow: hidden;
@@ -78,6 +80,13 @@ aside .container_centralizado{
   display: flex;
 }
 
+.graficos span{
+  color: white;
+  margin-left: 50px;
+  font-family: 'arvo';
+  font-size: larger;
+}
+
 .graficos-box {
   display: flex;
   flex-direction: row;
@@ -89,116 +98,85 @@ aside .container_centralizado{
 }
 
 .grafico {
-  margin: 10px;
-  /* height: 800px; */
+  margin: 20px;
   /* Adicione um espaçamento entre os gráficos */
+  justify-content: center;
+}
+
+.container-avisos{
+  float: left;
+}
+
+.setor{
+  color: rgb(255, 255, 255);
+  width: 160px;
+  height: 80px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 2px;
+  background-color: rgba(255, 217, 0, 0.712);
+  text-align: center;
+  align-items: center;
+  margin-top: 44px;
+  margin-bottom: 21px;
+  margin-right: 5px
+}
+
+.status-geral{
+  color: whitesmoke;
+  width: 160px;
+  height: 92px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  background-color: rgb(76, 76, 73);
+  text-align: center;
+  font-size: 15px;
+}
+
+.uso-componente{
+  font-size: 33px;
 }
 
 #myChart2 {
   padding: 5px 10px;
   border-radius: 10px;
-  height: 30vh;
-  width: 40vw;
+  height: 14.5vh;
+  width: 14.5vw;
   background-color: #24252f;
+  border: 2px solid yellow;
 }
 
 #myChart3 {
   padding: 5px 10px;
   border-radius: 10px;
-  height: 30vh;
-  width: 40vw;
+  height: 14.5vh;
+  width: 14.5vw;
   background-color: #24252f;
+  border: 2px solid yellow;
 }
 
 #myChart4 {
   padding: 5px 10px;
   border-radius: 10px;
-  height: 30vh;
-  width: 40vw;
+  height: 11vh;
+  width: 11vw;
   background-color: #24252f;
+  border: 2px solid yellow;
 }
 
 #myChart6 {
   padding: 5px 10px;
   border-radius: 10px;
-  height: 30vh;
-  width: 40vw;
+  height: 11vh;
+  width: 11vw;
   background-color: #24252f;
+  border: 2px solid yellow;
 }
 
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1vh 5vh;
-  position: fixed;
-}
-
-.menu-hamburguer {
-  background-color: #1d1e27;
-  width: 35vh;
-  height: 100vh;
-  position: fixed;
-  box-shadow: 3px 3px 3px 3px #00000069, 0 100px 300px -15px #00000083 inset;
-  transition: 0.6s;
-  z-index: 6;
-  overflow-y: auto;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow-x: hidden;
-  margin-left: -40vh;
-}
-
-.menu-hamburguer a {
-  color: white;
-  text-decoration: none;
-}
-
-.imagem-menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 5vh;
-  margin-top: -8vh;
-}
-
-.logo {
-  display: flex;
-  margin-right: 85vh;
-}
-
-.logo img {
-  display: flex;
-  cursor: pointer;
-}
-
-nav ul {
+/* nav ul {
   display: flex;
   list-style: none;
 }
-
-.voltar {
-  width: 5vh;
-  height: 5vh;
-  margin-left: 2vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 6vh;
-  transition: 0.5s;
-  margin-top: 3vh;
-}
-
-.voltar img {
-  cursor: pointer;
-  width: 6vh;
-}
-
-.voltar a:hover {
-  transform: scale(1);
-}
-
 
 :root {
   --speed: 200ms;
@@ -239,7 +217,7 @@ nav ul {
 .menu-secondary-exit-active {
   transform: translateX(300px);
   transition: all var(--speed) ease;
-}
+} */
 
 body {
   padding: 0;
@@ -326,7 +304,7 @@ body {
   left: 0;
   height: 100%;
   width: 260px;
-  background: #11101d;
+  background: #000000;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -341,7 +319,7 @@ body {
 }
 .sidebar .logo-details i{
   font-size: 30px;
-  color: #fff;
+  color: #ffd700;
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -391,7 +369,7 @@ body {
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: #ffd700;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -481,7 +459,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1d1b31;
+  background: #191920;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -524,7 +502,7 @@ body {
 }
 .home-section{
   position: relative;
-  background: #E4E9F7;
+  background: #16161a;
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
@@ -541,7 +519,7 @@ body {
 }
 .home-section .home-content .bx-menu,
 .home-section .home-content .text{
-  color: #11101d;
+  color: #ffffff;
   font-size: 35px;
 }
 .home-section .home-content .bx-menu{
