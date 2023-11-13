@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title> Setor 1 Máquina 2 </title>
     <script src="../js/menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,6 +11,7 @@
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/logo.png">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                     <span class="link_name">Dashboard</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Category</a></li>
+                    <li><a class="link_name" href="#">Dashboard</a></li>
                 </ul>
             </li>
             <li>
@@ -39,8 +40,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Setor 1</a></li>
-                    <li><a href="#">Máquina 1</a></li>
-                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="dashboardMonitoramento.html">Máquina 1</a></li>
+                    <li><a href="dashboardMonitoramentoRuim.html">Máquina 2</a></li>
                     <li><a href="#">Máquina 3</a></li>
                 </ul>
             </li>
@@ -103,12 +104,12 @@
                 </ul>
             </li> -->
             <li>
-                <a href="#">
+                <a href="dashboardHistorico.html">
                     <i class='bx bx-history'></i>
                     <span class="link_name">Histórico</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Histórico</a></li>
+                    <li><a class="link_name" href="dashboardHistorico.html">Histórico</a></li>
                 </ul>
             </li>
             <li>
@@ -138,39 +139,50 @@
         <div class="home-content">
             <i class='bx bx-menu'></i>
             <div class="fora-da-sidebar">
-                <!-- <div class="indices">
-                    <div class="indice_bom">
-                        <h1>GPU</h1>
-                        <span><b>Status: </b>Boa</span>
+
+                <div class="container-avisos">
+                    <div class="container-avisos">
+                        <div class="setor">Você está em: <br> Setor 1 <br> Máquina 2</div>
+
+                        <span style="color: white;"><b>Uso da RAM</b></span>
+                        <div class="status-geral"> <br> <b class="uso-componente">7,52 GB</b> <br> <br>Disponível: 8,0
+                            GB</div>
+
+                        <span style="color: white;"><b>Uso da GPU</b></span>
+                        <div class="status-geral"> <br> <b class="uso-componente">2,5 GB</b> <br> <br>Disponível: 3,9 GB
+                        </div>
+
+                        <span style="color: white;"><b>Uso da CPU</b></span>
+                        <div class="status-geral"> <br> <b class="uso-componente">353</b> <br> <br>Processos Ativos
+                        </div>
+
+                        <span style="color: white;"><b>Uso do Disco</b></span>
+                        <div class="status-geral"> <br> <b class="uso-componente">208 GB</b> <br> <br>Disponível: 220 GB
+                        </div>
+
                     </div>
-                    <div class="indice_bom">
-                        <h1>RAM</h1>
-                        <span><b>Status: </b>Boa</span>
-                    </div>
-                    <div class="indice_bom">
-                        <h1>CPU</h1>
-                        <span><b>Status: </b>Boa</span>
-                    </div>
-                    <div class="indice_bom">
-                        <h1>GPU</h1>
-                        <span><b>Status: </b>Boa</span>
-                    </div>
-                </div> -->
-                <span>setor 1, máquina 2</span>
+                </div>
+
                 <div class="graficos">
-                    <div class="graficos_de_cima">
+                    <div class="graficos_da_esquerda">
                         <div class="grafico">
-                            <canvas id="myChart2"></canvas>
+                            <span>Uso da RAM nas Últimas 8 Horas</span>
+                            <div>
+                                <canvas id="myChart2"></canvas>
+                            </div>
                         </div>
                         <div class="grafico">
+                            <span>Uso da CPU nas Últimas 8 Horas</span>
                             <canvas id="myChart3"></canvas>
                         </div>
                     </div>
-                    <div class="graficos_de_baixo">
+                    <div class="graficos_da_direita">
                         <div class="grafico">
+                            <span>Uso da GPU nas Últimas 8 Horas</span>
                             <canvas id="myChart4"></canvas>
                         </div>
                         <div class="grafico">
+                            <span>Uso do Disco nas Últimas 8 Horas</span>
                             <canvas id="myChart6"></canvas>
                         </div>
                     </div>
@@ -245,7 +257,7 @@
             label: 'Uso da RAM (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [87, 88, 86, 87, 86, 88, 90, 92, 91, 89, 89],
+            data: [87, 88, 89, 91, 92, 91, 94, 93, 91, 94, 94],
         },
         {
             label: 'Uso máximo da RAM (%)',
@@ -295,7 +307,7 @@
             label: 'Uso da CPU (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [90, 91, 89, 89, 90, 92, 90, 88, 89, 88, 89],
+            data: [82, 81, 84, 85, 88, 92, 94, 91, 93, 95, 94],
         },
         {
             label: 'Uso máximo da CPU (%)',
@@ -345,7 +357,7 @@
             label: 'Temp Placa de Vídeo (°C)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [82, 80, 81, 80, 90, 78, 78, 79, 80, 83, 81],
+            data: [82, 80, 84, 87, 90, 88, 86, 86, 87, 88, 88],
         },
         {
             label: 'Temperatura Máx (°C)',
@@ -390,7 +402,7 @@
             label: 'Uso do Disco (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [87, 89, 88, 90, 89, 89, 91, 90, 88, 87, 89],
+            data: [89, 88, 89, 90, 89, 90, 91, 93, 92, 92, 94],
         },
         {
             label: 'Uso máximo do Disco (%)',

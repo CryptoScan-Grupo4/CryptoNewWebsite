@@ -3,48 +3,190 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico</title>
-    <link rel="stylesheet" href="../css/dashHistorico.css">
     <script src="../js/menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/dashHistorico.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body>
-    <div class="container">
-        <aside id="sidebar" class="sidebar-wrapper"></aside>
-
-        <div class="conteudo_graficos">
-            <div class="container_centralizado_botao">
-                <button id="botao_historico" onclick="alterar_anual()">Histórico Anual</button>
-                <button id="botao_historico" onclick="alterar_mensal()">Histórico Mensal</button>
-                <button id="botao_historico" onclick="alterar_semanal()">Histórico Semanal</button>
+    <body>
+        <div class="sidebar close">
+            <div class="logo-details">
+                <i class='bx bx-code-alt'></i>
+                <span class="logo_name">Crypto Scan</span>
             </div>
-            <div class="container_centralizado" id="grafico_anual">
-                <div class="historico_grafico">
-                    <canvas id="myChart_anual"></canvas>
+            <ul class="nav-links">
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">Dashboard</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Dashboard</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bxs-business'></i>
+                            <span class="link_name">Setor 1</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Setor 1</a></li>
+                        <li><a href="dashboardMonitoramento.html">Máquina 1</a></li>
+                        <li><a href="#">Máquina 2</a></li>
+                        <li><a href="#">Máquina 3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bxs-business'></i>
+                            <span class="link_name">Setor 2</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Setor 2</a></li>
+                        <li><a href="#">Máquina 1</a></li>
+                        <li><a href="#">Máquina 2</a></li>
+                        <li><a href="#">Máquina 3</a></li>
+                        <li><a href="#">Máquina 4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user'></i>
+                        <span class="link_name">Funcionários</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Funcionários</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-line-chart'></i>
+                        <span class="link_name">Chart</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Chart</a></li>
+                    </ul>
+                </li>
+                <!-- <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-plug'></i>
+                        <span class="link_name">Plugins</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
-            </div>
-
-            <div class="container_centralizado" id="grafico_mensal">
-                <div class="historico_grafico">
-                    <canvas id="myChart_mensal"></canvas>
-                </div>
-            </div>
-
-            <div class="container_centralizado" id="grafico_semanal">
-                <div class="historico_grafico">
-                    <canvas id="myChart_semanal"></canvas>
-                </div>
-            </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Plugins</a></li>
+                    <li><a href="#">UI Face</a></li>
+                    <li><a href="#">Pigments</a></li>
+                    <li><a href="#">Box Icons</a></li>
+                </ul>
+            </li> -->
+                <!-- <li>
+                <a href="#">
+                    <i class='bx bx-compass'></i>
+                    <span class="link_name">Explore</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Explore</a></li>
+                </ul>
+            </li> -->
+                <li>
+                    <a href="#">
+                        <i class='bx bx-history'></i>
+                        <span class="link_name">Histórico</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Histórico</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-cog'></i>
+                        <span class="link_name">Setting</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Setting</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="profile-details">
+                        <div class="profile-content">
+                            <img src="../img/user.jpg" alt="profileImg">
+                        </div>
+                        <div class="name-job">
+                            <div class="profile_name">João Lucas</div>
+                            <div class="job">Empresário</div>
+                        </div>
+                        <i class='bx bx-log-out'></i>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
+        <section class="home-section">
+            <div class="home-content">
+                <i class='bx bx-menu'></i>
+                <div class="conteudo_graficos">
+                    <div class="container_centralizado_botao">
+                        <button id="botao_historico" onclick="alterar_anual()">Histórico Anual</button>
+                        <button id="botao_historico" onclick="alterar_mensal()">Histórico Mensal</button>
+                        <button id="botao_historico" onclick="alterar_semanal()">Histórico Semanal</button>
+                    </div>
+                    <div class="container_centralizado" id="grafico_anual">
+                        <div class="historico_grafico">
+                            <canvas id="myChart_anual"></canvas>
+                        </div>
+                    </div>
 
-</body>
+                    <div class="container_centralizado" id="grafico_mensal">
+                        <div class="historico_grafico">
+                            <canvas id="myChart_mensal"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="container_centralizado" id="grafico_semanal">
+                        <div class="historico_grafico">
+                            <canvas id="myChart_semanal"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+    </body>
+
 
 </html>
+
+<!--  script da sidebar -->
+
+<script>
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu");
+        });
+    }
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    });
+</script>
 
 <script>
     const labels_historico_anual = [
@@ -279,177 +421,4 @@
         chartSemanal.style.display = "block";
         console.log(chartMensal.style.display);
     }
-</script>
-
-<script>
-    const menu = [
-        {
-            parent: 'aliments',
-            label: 'Setor 1',
-            icon: '✔',
-            click: goToChild,
-            child: [
-                { parent: 'aliments', label: 'Voltar', icon: '◀', click: backToParent },
-                { parent: 'aliments', label: 'Máquina 1', icon: '✔', click: dashBoa },
-                { parent: 'aliments', label: 'Máquina 2', icon: '✔', click: dashBoa },
-                { parent: 'aliments', label: 'Máquina 3', icon: '✔', click: dashBoa },
-                { parent: 'aliments', label: 'Máquina 4', icon: '✔', click: dashBoa }
-            ],
-            rightIcon: '▶',
-        },
-        {
-            parent: 'teste',
-            label: 'Setor 2',
-            icon: '✖',
-            click: goToChild,
-            child: [
-                { parent: 'teste', label: 'Voltar', icon: '◀', click: backToParent },
-                { parent: 'teste', label: 'Máquina 1', icon: '✖', click: dashRuim },
-                { parent: 'teste', label: 'Máquina 2', icon: '✔', click: dashBoa },
-                { parent: 'teste', label: 'Máquina 3', icon: '✖', click: dashRuim },
-                { parent: 'teste', label: 'Máquina 4', icon: '✔', click: dashBoa }
-            ],
-            rightIcon: '▶',
-        },
-        {
-            parent: 'colors',
-            label: 'Setor 3',
-            icon: '✔',
-            click: goToChild,
-            child: [
-                { parent: 'colors', label: 'Voltar', icon: '◀', click: backToParent },
-                { parent: 'colors', label: 'Máquina 1', icon: '✔', click: dashBoa },
-                { parent: 'colors', label: 'Máquina 2', icon: '✔', click: dashBoa },
-                { parent: 'colors', label: 'Máquina 3', icon: '✔', click: dashBoa }
-            ],
-            rightIcon: '▶',
-        },
-        {
-            parent: 'aliments',
-            label: 'Histórico',
-            icon: '◯',
-            click: voltarHistorico,
-            child: [
-                { parent: 'aliments', label: 'Voltar', icon: '◀', click: backToParent },
-                { parent: 'aliments', label: 'Máquina 1', icon: '✔' },
-                { parent: 'aliments', label: 'Máquina 2', icon: '✔' },
-                { parent: 'aliments', label: 'Máquina 3', icon: '✔' },
-                { parent: 'aliments', label: 'Máquina 4', icon: '✔' }
-            ],
-            rightIcon: '▶',
-        },
-        {
-            parent: 'aliments',
-            label: 'Home',
-            icon: '◯',
-            click: voltarHome,
-            child: [
-                { parent: 'aliments', label: 'Voltar', icon: '◀', click: backToParent },
-                { parent: 'aliments', label: 'Máquina 1', icon: '✔' },
-                { parent: 'aliments', label: 'Máquina 2', icon: '✔' },
-                { parent: 'aliments', label: 'Máquina 3', icon: '✔' },
-                { parent: 'aliments', label: 'Máquina 4', icon: '✔' }
-            ],
-            rightIcon: '▶',
-        }
-    ]
-
-    function backToParent(event) {
-
-        const { id } = event.currentTarget.dataset
-
-        let moveIn = document.getElementById("menu");
-        moveIn.className = 'menu menu-primary-enter menu-primary-enter-active'
-
-        let moveOut = document.getElementById(id);
-        moveOut.className = 'menu menu-secondary-exit menu-secondary-exit-active'
-
-    }
-
-    function goToChild(event) {
-
-        const { id } = event.currentTarget.dataset
-
-        let moveIn = document.getElementById(id);
-        moveIn.className = 'menu menu-secondary-enter menu-secondary-enter-active'
-
-
-        let moveOut = document.getElementById("menu");
-        moveOut.className = 'menu menu-primary-exit menu-primary-exit-active'
-
-    }
-
-    function voltarHistorico(event) {
-        window.location.href = "dashboardHistorico.html"
-    }
-
-    function dashBoa(event) {
-        window.location.href = "dashboardComponentes.html"
-    }
-
-    function dashRuim(event) {
-        window.location.href = "dashboardRuim.html"
-    }
-
-    function voltarHome(event) {
-        window.location.href = "../index.html"
-    }
-
-    const createMenuItem = (item) => {
-        let li = document.createElement("li");
-        li.className = 'menu-item'
-        console.log(item.icon);
-        if (item.icon == "✖") {
-            li.innerHTML = `    
-            <div class="icon" style="background-color: red">${item.icon}</div>
-            <span class="label">${item.label}</span>
-            <div>${item.rightIcon || ''}</div>
-        `
-        } else if (item.icon == "◀" || item.icon == "◯") {
-            li.innerHTML = `    
-            <div class="icon" style="background-color: #79690d">${item.icon}</div>
-            <span class="label">${item.label}</span>
-            <div>${item.rightIcon || ''}</div>
-        `
-        } else {
-            li.innerHTML = `    
-            <div class="icon">${item.icon}</div>
-            <span class="label">${item.label}</span>
-            <div>${item.rightIcon || ''}</div>
-        `
-        }
-
-        li.dataset.id = item.parent
-        li.onclick = item.click
-
-        return li
-    }
-
-    const createChildMenu = (items) => {
-        const sidebar = document.getElementById("sidebar")
-        const menu = document.createElement("ul");
-        menu.className = 'menu menu-secondary-exit menu-secondary-exit-active'
-        menu.id = items[0].parent
-        items.map(el => {
-            let li = createMenuItem(el)
-            menu.appendChild(li)
-        })
-        sidebar.appendChild(menu)
-    }
-
-    const buildMenu = () => {
-
-        const sidebar = document.getElementById("sidebar")
-        const mainMenu = document.createElement("ul");
-        mainMenu.className = 'menu'
-        mainMenu.id = 'menu'
-        menu.map(el => {
-            let li = createMenuItem(el)
-            mainMenu.appendChild(li)
-            createChildMenu(el.child)
-        })
-        sidebar.appendChild(mainMenu)
-    }
-
-    buildMenu()
 </script>
