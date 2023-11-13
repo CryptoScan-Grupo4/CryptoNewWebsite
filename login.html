@@ -148,7 +148,7 @@
       <button class="btn-cadastrar"
             onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value))">
             Cadastrar
-          </button>
+      </button>
 
     </div>
 
@@ -189,20 +189,28 @@
 }
 
 async function loginFuncionario(email, senha) {
-  if ((email !== "" && senha !== "") && (email !== undefined && senha !== undefined)) {
-   await axios.get('http://localhost:3000/funcionario', {
-        email: email,
-        senha: senha
-    }).then((response) => {
-      console.log(response);
-      window.location = './dashboard/dashboardComponentes.html'
-    }).catch((error) => {
+  if (email !== undefined && senha !== undefined && email !== "" && senha !== "") {
+    try {
+      const response = await axios.get('http://localhost:3000/funcionario', {
+        params: {
+          email: email,
+          senha: senha
+        }
+      });
+
+      if (response.data) {
+        console.log(response.data);
+        sessionStorage.NOME_FUNCIONARIO = response.data.nomeFuncionario;
+        window.location = './dashboard/dashboard-cryptoScan.html'
+      } else {
+        alert("Insira o email e a senha corretamente");
+      }
+    } catch (error) {
       console.error(error);
-    })
-  } else {
-    alert("Insira o email e a senha corretamente")
+    }
   }
 }
+
 </script>
 </html>
 

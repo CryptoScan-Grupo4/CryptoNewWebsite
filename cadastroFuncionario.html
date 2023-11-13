@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Funcionário</title>
+    <link rel="stylesheet" href="css/cadastroFuncionario.css">
+    <meta charset="UTF-8">
+    <script src="/js/menu.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bx-code-alt'></i>
+            <span class="logo_name">Crypto Scan</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="./dashboard/dashboard-cryptoScan.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Painel</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="./dashboard/dashboard-cryptoScan.html">Painel</a></li>
+                </ul>
+            </li>
+            <!-- <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 1</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 1</a></li>
+                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                </ul>
+            </li> -->
+            <!-- <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 2</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 2</a></li>
+                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                    <li><a href="#">Máquina 4</a></li>
+                </ul>
+            </li> -->
+            <li>
+                <a href="#">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Cadastrar Funcionários</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Cadastrar Funcionários</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">Chart</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Chart</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link_name">Histórico</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Histórico</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="../img/user.jpg" alt="profileImg">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">João Lucas</div>
+                        <div class="job">Empresário</div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+        </div>
+
+
+
+        <div class="maincadastro">
+            <p class="titulo2">Cadastrar Funcionário</p>
+            <div class="campos1">
+
+                <label for="Nome">Nome Funcionário: </label>
+                <div class="input-div">
+                    <input data-aos="fade-up" type="Nome" name="Nome" id="nome_input"
+                        placeholder="Insira seu nome completo">
+                    </input>
+                    <br>
+                </div>
+
+                <label for="Email">Email:</label>
+                <div class="input-div">
+                    <input data-aos="fade-up" type="email" name="Email" id="rgtEmail_input"
+                        placeholder="representante@email.com">
+                    </input>
+                    <br>
+                </div>
+
+                <label for="RG">RG:</label>
+                <div class="input-div">
+                    <input type="rg" name="rg" id="rg_input" placeholder="00000000">
+                    </input>
+                    <br>
+                </div>
+
+
+                <label for="CPF">CPF:</label>
+                <div class="input-div">
+                    <input data-aos="fade-up" type="CPF" name="CPF" id="cpf_input" placeholder="000.000.000-00">
+                    </input>
+                    <br>
+                </div>
+
+
+            </div>
+
+
+            <div class="campos2">
+
+                <label for="Senha">Senha:</label>
+                <div class="input-div">
+                    <input type="password" id="rgtSenha_input" placeholder="*******">
+                </div>
+
+                <label for="Senha">Repetir Senha:</label>
+                <div class="input-div">
+                    <img class="icon-input" src="" alt="">
+                    <input type="password" id="repetir_senha_input" placeholder="*******">
+                </div>
+
+                <label for="codEmp">Código da empresa:</label>
+                <div class="input-div">
+                    <input data-aos="fade-up" type="codEmp" name="codEmp" id="codEmp_input"
+                        placeholder="Insira o código da empresa">
+                    </input>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="container-select">
+                <label class="label-select" for="tipoConta">Tipo da Conta:</label>
+                <select name="tipoConta" id="tipoConta">
+                    <option value="0">--Selecione o tipo da conta--</option>
+                    <option value="1">CEO</option>
+                    <option value="2">Representante</option>
+                    <option value="3">Funcionário</option>
+                </select>
+            </div>
+
+            <button class="btn-cadastrar"
+                onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value))">
+                Cadastrar
+            </button>
+
+        </div>
+    </section>
+</body>
+<script>
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu");
+        });
+    }
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    });
+</script>
