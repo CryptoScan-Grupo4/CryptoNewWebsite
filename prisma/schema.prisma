@@ -8,13 +8,14 @@ datasource db {
 }
 
 model funcionario {
-  idFuncionario    Int    @id @default(autoincrement())
-  nomeFuncionario  String @db.VarChar(45)
-  cpfFuncionario   String @db.Char(14)
-  emailFuncionario String @db.VarChar(45)
-  Senha            String @db.VarChar(45)
+  idFuncionario    Int     @id @default(autoincrement())
+  nomeFuncionario  String? @db.VarChar(45)
+  rgFuncionario    String? @db.Char(10)
+  cpfFuncionario   String? @db.VarChar(45)
+  emailFuncionario String? @db.VarChar(45)
+  Senha            String? @db.VarChar(45)
   fkTipoConta      Int
-  fkEmpresa        Int
+  fkEmpresa        Int?
 
   @@index([fkEmpresa], map: "fkEmpresa")
   @@index([fkTipoConta], map: "fkTipoConta")
@@ -22,22 +23,24 @@ model funcionario {
 
 model componente {
   idComponente     Int     @id @default(autoincrement())
+  nomeModelo       String? @db.VarChar(45)
   modeloComponente String? @db.VarChar(45)
   tipoComponente   String? @db.VarChar(45)
-  serialComponente String? @db.VarChar(45)
+  fkSetup          Int?
+
+  @@index([fkSetup], map: "fkSetup")
 }
 
 model computador {
-  idComputador             Int     @default(autoincrement())
-  fkSetor                  Int
-  fkFuncionarioResponsavel Int?
-  fkTipoConta              Int?
-  serialComputador         String? @db.VarChar(45)
+  idComputador     Int     @default(autoincrement())
+  serialComputador String? @db.VarChar(45)
+  statusAtividade  String? @db.VarChar(10)
+  fkEmpresa        Int
+  fkSetor          Int?
 
-  @@id([idComputador, fkSetor])
-  @@index([fkFuncionarioResponsavel], map: "fkFuncionarioResponsavel")
+  @@id([idComputador, fkEmpresa])
   @@index([fkSetor], map: "fkSetor")
-  @@index([fkTipoConta], map: "fkTipoConta")
+  @@index([fkEmpresa], map: "fkEmpresa")
 }
 
 model empresa {
@@ -53,25 +56,23 @@ model empresa {
 }
 
 model setor {
-  idSetor   Int     @default(autoincrement())
-  Andar     String? @db.VarChar(45)
-  fkEmpresa Int
+  idSetor                  Int     @default(autoincrement())
+  Andar                    String? @db.VarChar(45)
+  fkEmpresa                Int
+  fkFuncionarioResponsavel Int?
 
   @@id([idSetor, fkEmpresa])
   @@index([fkEmpresa], map: "fkEmpresa")
+  @@index([fkFuncionarioResponsavel], map: "fkFuncionarioResponsavel")
 }
 
 model setup {
-  idSetup      Int     @default(autoincrement())
+  idSetup      Int      @default(autoincrement())
   fkComputador Int
-  fkComponente Int
-  fkSetor      Int
-  StatuSetup   String? @db.VarChar(20)
+  dataCriacao  DateTime @default(now()) @db.Timestamp(0)
 
-  @@id([idSetup, fkComponente, fkComputador, fkSetor])
-  @@index([fkComponente], map: "fkComponente")
+  @@id([idSetup, fkComputador])
   @@index([fkComputador], map: "fkComputador")
-  @@index([fkSetor], map: "fkSetor")
 }
 
 model tipoconta {
@@ -87,13 +88,21 @@ model token {
 
 model medida {
   idMedida       Int      @default(autoincrement())
-  usoProcessador Float?   @db.Float
-  usoRam         Float?   @db.Float
-  usoDisco       Float?   @db.Float
-  dataMedida     DateTime @default(now()) @db.Timestamp(0)
-  unidadeMedida  String?  @db.VarChar(45)
+  medida         Float?   @db.Float
+  dataHoraMedida DateTime @default(now()) @db.Timestamp(0)
+  fkComponente   Int
   fkSetup        Int
 
-  @@id([idMedida, fkSetup])
+  @@id([idMedida, fkComponente, fkSetup])
   @@index([fkSetup], map: "fkSetup")
+  @@index([fkComponente], map: "fkComponente")
+}
+
+model unidadecomponente {
+  idUnidadeComponente Int     @id @default(autoincrement())
+  unidadeComponente   String? @db.VarChar(45)
+  totalComponente     Float?  @db.Float
+  fkComponente        Int?
+
+  @@index([fkComponente], map: "fkComponente")
 }

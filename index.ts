@@ -52,6 +52,11 @@ app.get('/funcionario', async (req, res) => {
       where: {
         emailFuncionario: email,
         Senha: senha
+      },
+      select:{
+        nomeFuncionario: true,
+        emailFuncionario: true,
+
       }
     })
     res.status(200).send(users)
