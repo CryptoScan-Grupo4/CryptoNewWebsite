@@ -8,92 +8,125 @@ datasource db {
 }
 
 model funcionario {
-  idFuncionario    Int    @id @default(autoincrement())
-  nomeFuncionario  String @db.VarChar(45)
-  cpfFuncionario   String @db.Char(14)
-  emailFuncionario String @db.VarChar(45)
-  Senha            String @db.VarChar(45)
+  idFuncionario    Int       @id @default(autoincrement())
+  nomeFuncionario  String?   @db.VarChar(45)
+  rgFuncionario    String?   @db.Char(10)
+  cpfFuncionario   String?   @db.VarChar(45)
+  emailFuncionario String?   @db.VarChar(45)
+  Senha            String?   @db.VarChar(45)
   fkTipoConta      Int
-  fkEmpresa        Int
+  fkEmpresa        Int?
+  empresa          empresa?  @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "funcionario_ibfk_1")
+  tipoconta        tipoconta @relation(fields: [fkTipoConta], references: [idTipoConta], onDelete: NoAction, onUpdate: NoAction, map: "funcionario_ibfk_2")
+  setor            setor[]
 
   @@index([fkEmpresa], map: "fkEmpresa")
   @@index([fkTipoConta], map: "fkTipoConta")
 }
 
 model componente {
-  idComponente     Int     @id @default(autoincrement())
-  modeloComponente String? @db.VarChar(45)
-  tipoComponente   String? @db.VarChar(45)
-  serialComponente String? @db.VarChar(45)
+  idComponente      Int                 @id @default(autoincrement())
+  nomeModelo        String?             @db.VarChar(45)
+  modeloComponente  String?             @db.VarChar(45)
+  tipoComponente    String?             @db.VarChar(45)
+  fkSetup           Int?
+  setup             setup?              @relation(fields: [fkSetup], references: [idSetup], onDelete: NoAction, onUpdate: NoAction, map: "componente_ibfk_1")
+  medida            medida[]
+  unidadecomponente unidadecomponente[]
+
+  @@index([fkSetup], map: "fkSetup")
 }
 
 model computador {
-  idComputador             Int     @default(autoincrement())
-  fkSetor                  Int
-  fkFuncionarioResponsavel Int?
-  fkTipoConta              Int?
-  serialComputador         String? @db.VarChar(45)
+  idComputador     Int     @default(autoincrement()) @unique
+  serialComputador String? @db.VarChar(45)
+  statusAtividade  String? @db.VarChar(10)
+  fkEmpresa        Int
+  fkSetor          Int?
+  empresa          empresa @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "computador_ibfk_1")
+  setor            setor?  @relation(fields: [fkSetor], references: [idSetor], onDelete: NoAction, onUpdate: NoAction, map: "computador_ibfk_2")
+  setup            setup[]
 
-  @@id([idComputador, fkSetor])
-  @@index([fkFuncionarioResponsavel], map: "fkFuncionarioResponsavel")
+  @@id([idComputador, fkEmpresa])
   @@index([fkSetor], map: "fkSetor")
-  @@index([fkTipoConta], map: "fkTipoConta")
+  @@index([fkEmpresa], map: "fkEmpresa")
 }
 
 model empresa {
-  idEmpresa   Int     @id @default(autoincrement())
-  nomeEmpresa String? @db.VarChar(45)
-  telEmpresa  String? @db.Char(10)
-  cepEmpresa  String? @db.Char(9)
-  numEndereco String? @db.VarChar(10)
-  cpnjEmpresa String? @db.VarChar(45)
+  idEmpresa   Int           @id @default(autoincrement())
+  nomeEmpresa String?       @db.VarChar(45)
+  telEmpresa  String?       @db.Char(10)
+  cepEmpresa  String?       @db.Char(9)
+  numEndereco String?       @db.VarChar(10)
+  cpnjEmpresa String?       @db.VarChar(45)
   fkToken     Int?
+  computador  computador[]
+  token       token?        @relation(fields: [fkToken], references: [idToken], onDelete: NoAction, onUpdate: NoAction, map: "empresa_ibfk_1")
+  funcionario funcionario[]
+  setor       setor[]
 
   @@index([fkToken], map: "fkToken")
 }
 
 model setor {
-  idSetor   Int     @default(autoincrement())
-  Andar     String? @db.VarChar(45)
-  fkEmpresa Int
+  idSetor                  Int          @default(autoincrement()) @unique
+  Andar                    String?      @db.VarChar(45)
+  fkEmpresa                Int
+  fkFuncionarioResponsavel Int?
+  computador               computador[]
+  funcionario              funcionario? @relation(fields: [fkFuncionarioResponsavel], references: [idFuncionario], onDelete: NoAction, onUpdate: NoAction, map: "setor_ibfk_1")
+  empresa                  empresa      @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "setor_ibfk_2")
 
   @@id([idSetor, fkEmpresa])
   @@index([fkEmpresa], map: "fkEmpresa")
+  @@index([fkFuncionarioResponsavel], map: "fkFuncionarioResponsavel")
 }
 
 model setup {
-  idSetup      Int     @default(autoincrement())
+  idSetup      Int          @default(autoincrement()) @unique
   fkComputador Int
-  fkComponente Int
-  fkSetor      Int
-  StatuSetup   String? @db.VarChar(20)
+  dataCriacao  DateTime     @default(now()) @db.Timestamp(0)
+  componente   componente[]
+  medida       medida[]
+  computador   computador   @relation(fields: [fkComputador], references: [idComputador], onDelete: NoAction, onUpdate: NoAction, map: "setup_ibfk_1")
 
-  @@id([idSetup, fkComponente, fkComputador, fkSetor])
-  @@index([fkComponente], map: "fkComponente")
+  @@id([idSetup, fkComputador])
   @@index([fkComputador], map: "fkComputador")
-  @@index([fkSetor], map: "fkSetor")
 }
 
 model tipoconta {
-  idTipoConta Int     @id @default(autoincrement())
-  tipoConta   String? @db.VarChar(45)
+  idTipoConta Int           @id @default(autoincrement())
+  tipoConta   String?       @db.VarChar(45)
+  funcionario funcionario[]
 }
 
 model token {
-  idToken     Int      @id @default(autoincrement())
-  token       String?  @db.VarChar(45)
-  dataEmitida DateTime @default(now()) @db.Timestamp(0)
+  idToken     Int       @id @default(autoincrement())
+  token       String?   @db.VarChar(45)
+  dataEmitida DateTime  @default(now()) @db.Timestamp(0)
+  empresa     empresa[]
 }
 
 model medida {
-  idMedida       Int      @default(autoincrement())
-  usoProcessador Float?   @db.Float
-  usoRam         Float?   @db.Float
-  usoDisco       Float?   @db.Float
-  dataMedida     DateTime @default(now()) @db.Timestamp(0)
-  unidadeMedida  String?  @db.VarChar(45)
+  idMedida       Int        @default(autoincrement())
+  medida         Float?     @db.Float
+  dataHoraMedida DateTime   @default(now()) @db.Timestamp(0)
+  fkComponente   Int
   fkSetup        Int
+  componente     componente @relation(fields: [fkComponente], references: [idComponente], onDelete: NoAction, onUpdate: NoAction, map: "medida_ibfk_1")
+  setup          setup      @relation(fields: [fkSetup], references: [idSetup], onDelete: NoAction, onUpdate: NoAction, map: "medida_ibfk_2")
 
-  @@id([idMedida, fkSetup])
+  @@id([idMedida, fkComponente, fkSetup])
   @@index([fkSetup], map: "fkSetup")
+  @@index([fkComponente], map: "fkComponente")
+}
+
+model unidadecomponente {
+  idUnidadeComponente Int         @id @default(autoincrement())
+  unidadeComponente   String?     @db.VarChar(45)
+  totalComponente     Float?      @db.Float
+  fkComponente        Int?
+  componente          componente? @relation(fields: [fkComponente], references: [idComponente], onDelete: NoAction, onUpdate: NoAction, map: "unidadecomponente_ibfk_1")
+
+  @@index([fkComponente], map: "fkComponente")
 }

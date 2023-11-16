@@ -52,6 +52,11 @@ app.get('/funcionario', async (req, res) => {
       where: {
         emailFuncionario: email,
         Senha: senha
+      },
+      select:{
+        nomeFuncionario: true,
+        emailFuncionario: true,
+
       }
     })
     res.status(200).send(users)
@@ -98,6 +103,23 @@ app.delete('/deletarUsuario/:id', async (req, res) => {
     })
   } catch (error) {
     res.status(304).json("Não foi possível deletar")
+    console.error(error)
+  }
+})
+
+// Dashboard
+
+app.get('/dadosProcessador', async (req, res) => {
+  try {
+    const cpuData = await prisma.medida.findMany({
+      where: {
+        fkComponente: 1
+      },
+      take: 11
+    })
+    res.status(200).send(cpuData)
+  } catch (error) {
+    res.status(404).json("Não foi possível encontrar")
     console.error(error)
   }
 })
