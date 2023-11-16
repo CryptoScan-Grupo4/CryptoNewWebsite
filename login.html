@@ -201,7 +201,7 @@ async function loginFuncionario(email, senha) {
       if (response.data) {
         console.log(response.data);
         sessionStorage.NOME_FUNCIONARIO = response.data.nomeFuncionario;
-        // window.location = './dashboard/dashboard-cryptoScan.html'
+        window.location = './dashboard/dashboard-cryptoScan.html'
       } else {
         alert("Insira o email e a senha corretamente");
       }

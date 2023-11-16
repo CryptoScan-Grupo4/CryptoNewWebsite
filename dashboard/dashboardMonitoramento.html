@@ -141,22 +141,22 @@
                 <div class="container-avisos">
                     <div class="container-avisos">
                         <div class="setor">Você está em: <br> Setor 1 <br> Máquina 1</div>
-    
+
                         <span style="color: white;"><b>Uso da RAM</b></span>
                         <div style="background-color: rgb(91, 152, 0);" class="status-geral"> <br> <b class="uso-componente">7,12 GB</b> <br> <br>Disponível: 8,0 GB
                         </div>
-    
+
                         <span style="color: white;"><b>Uso da GPU</b></span>
                         <div style="background-color: rgb(91, 152, 0);" class="status-geral"> <br> <b class="uso-componente">1,4 GB</b> <br> <br>Disponível: 3,9 GB
                         </div>
-    
+
                         <span style="color: white;"><b>Uso da CPU</b></span>
                         <div class="status-geral"> <br> <b class="uso-componente">263</b> <br> <br>Processos Ativos</div>
-    
+
                         <span style="color: white;"><b>Uso do Disco</b></span>
                         <div style="background-color: rgb(91, 152, 0);" class="status-geral"> <br> <b class="uso-componente">178 GB</b> <br> <br>Disponível: 220 GB
                         </div>
-    
+
                     </div>
               </div>
 
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                         <div class="grafico">
-                            <span>Uso da CPU nas Últimas 8 Horas</span>
+                            <span>Uso da CPU nas Últimas 10 Horas</span>
                             <canvas id="myChart3"></canvas>
                         </div>
                     </div>
@@ -283,8 +283,24 @@
 <!-- 3 grafico (CPU) -->
 
 
-
+<script src="../node_modules/axios/dist/axios.min.js"></script>
 <script>
+    const getCpuData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/dadosProcessador', []);
+            const cpuData = response?.data.map((dado) => dado.medida);
+
+            myChart3.data.datasets[0].data = cpuData;
+            myChart3.update();
+            console.log(response)
+            console.log(cpuData)
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    setInterval(getCpuData(), 3000);
+    const dado = getCpuData()
     const labels_cpu = [
         '08:00',
         '09:00',
@@ -305,7 +321,7 @@
             label: 'Uso da CPU (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [90, 91, 89, 89, 90, 92, 90, 88, 89, 88, 89],
+            data: [], // Inicialmente vazio
         },
         {
             label: 'Uso máximo da CPU (%)',
@@ -327,7 +343,6 @@
         document.getElementById('myChart3'),
         config_cpu
     );
-
 </script>
 
 
