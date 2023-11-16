@@ -141,22 +141,33 @@
                 <div class="container-avisos">
                     <div class="container-avisos">
                         <div class="setor">Você está em: <br> Setor 1 <br> Máquina 1</div>
-
-                        <span style="color: white;"><b>Uso da RAM</b></span>
-                        <div style="background-color: rgb(91, 152, 0);" class="status-geral"> <br> <b class="uso-componente">7,12 GB</b> <br> <br>Disponível: 8,0 GB
+    
+                        <span id="spanRam"><b>Uso da RAM</b></span>
+                        <div id="tooltip" class="status-geral" onmouseover="ativarHover()" onmouseleave="desativarHover()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente">7,12 GB</b> <br> <br>Disponível: 8,0 GB
+                            <span class="tooltiptext"><b>Métricas:</b> <br>
+                            🟢: Uso abaixo de 90%. <br>
+                            🔴: Uso maior ou igual a 90%.</span>
                         </div>
-
-                        <span style="color: white;"><b>Uso da GPU</b></span>
-                        <div style="background-color: rgb(91, 152, 0);" class="status-geral"> <br> <b class="uso-componente">1,4 GB</b> <br> <br>Disponível: 3,9 GB
+    
+                        <span id="spanGPU"><b>Uso da GPU</b></span>
+                        <div id="tooltip" class="status-geral" onmouseover="ativarHoverGPU()" onmouseleave="desativarHoverGPU()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente">1,4 GB</b> <br> <br>Disponível: 3,9 GB
+                            <span class="tooltiptext"><b>Métricas:</b> <br>
+                                🟢: Temperatura abaixo de 85°C. <br>
+                                🔴: Temperatura maior ou igual a 85°C.</span>
                         </div>
-
-                        <span style="color: white;"><b>Uso da CPU</b></span>
-                        <div class="status-geral"> <br> <b class="uso-componente">263</b> <br> <br>Processos Ativos</div>
-
-                        <span style="color: white;"><b>Uso do Disco</b></span>
-                        <div style="background-color: rgb(91, 152, 0);" class="status-geral"> <br> <b class="uso-componente">178 GB</b> <br> <br>Disponível: 220 GB
+    
+                        <span id="spanCPU"><b>Uso da CPU</b></span>
+                        <div id="tooltip" class="status-geral" onmouseover="ativarHoverCPU()" onmouseleave="desativarHoverCPU()"> <br> <b class="uso-componente">263</b> <br> <br>Processos Ativos
+                            <span class="tooltiptext">Contagem de Processos ativos atualmente.</span>
                         </div>
-
+    
+                        <span id="spanDisco"><b>Uso do Disco</b></span>
+                        <div id="tooltip" class="status-geral" onmouseover="ativarHoverDisco()" onmouseleave="desativarHoverDisco()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente">178 GB</b> <br> <br>Disponível: 220 GB
+                            <span class="tooltiptext"><b>Métricas:</b> <br>
+                                🟢: Uso abaixo de 90%. <br>
+                                🔴: Uso maior ou igual a 90%.</span>
+                        </div>
+                        
                     </div>
               </div>
 
@@ -191,6 +202,50 @@
 </body>
 
 </html>
+
+<script>
+
+function ativarHover() {
+    var spanRam = document.getElementById('spanRam');
+    spanRam.classList.add('hovered');
+}
+
+function desativarHover() {
+    var spanRam = document.getElementById('spanRam');
+    spanRam.classList.remove('hovered');
+}
+
+function ativarHoverGPU() {
+    var spanGPU = document.getElementById('spanGPU');
+    spanGPU.classList.add('hovered');
+}
+
+function desativarHoverGPU() {
+    var spanGPU = document.getElementById('spanGPU');
+    spanGPU.classList.remove('hovered');
+}
+
+function ativarHoverCPU() {
+    var spanCPU = document.getElementById('spanCPU');
+    spanCPU.classList.add('hovered');
+}
+
+function desativarHoverCPU() {
+    var spanCPU = document.getElementById('spanCPU');
+    spanCPU.classList.remove('hovered');
+}
+
+function ativarHoverDisco() {
+    var spanDisco = document.getElementById('spanDisco');
+    spanDisco.classList.add('hovered');
+}
+
+function desativarHoverDisco() {
+    var spanDisco = document.getElementById('spanDisco');
+    spanDisco.classList.remove('hovered');
+}
+
+</script>
 
 <script>
     let arrow = document.querySelectorAll(".arrow");
@@ -415,7 +470,7 @@
             label: 'Uso do Disco (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [87, 89, 88, 90, 89, 89, 91, 90, 88, 87, 89],
+            data: [87, 89, 88, 90, 89, 89, 91, 90, 88, 87, 89]
         },
         {
             label: 'Uso máximo do Disco (%)',

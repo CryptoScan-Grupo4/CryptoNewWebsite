@@ -131,6 +131,60 @@ aside .container_centralizado{
   background-color: rgb(76, 76, 73);
   text-align: center;
   font-size: 15px;
+  transition: 0.4s;
+}
+
+.status-geral:hover{
+  transition: 0.4s;
+  width: 180px;
+  height: 112px;
+}
+
+#spanRam{
+  color: white;
+  transition: 0.4s;
+}
+
+#spanRam.hovered{
+  transition: 0.4s;
+  margin-left: 35px;
+}
+
+
+
+
+#spanGPU{
+  color: white;
+  transition: 0.4s;
+}
+
+#spanGPU.hovered{
+  transition: 0.4s;
+  margin-left: 35px;
+}
+
+
+
+#spanCPU{
+  color: white;
+  transition: 0.4s;
+}
+
+#spanCPU.hovered{
+  transition: 0.4s;
+  margin-left: 35px;
+}
+
+
+
+#spanDisco{
+  color: white;
+  transition: 0.4s;
+}
+
+#spanDisco.hovered{
+  transition: 0.4s;
+  margin-left: 35px;
 }
 
 .uso-componente{
@@ -557,4 +611,41 @@ body {
     width: 100%;
     left: 0;
   }
+}
+
+/* TOOLTIP */
+
+#tooltip {
+  position: relative;
+  display: block;
+}
+
+#tooltip .tooltiptext {
+  visibility: hidden;
+  width: 170px;
+  background-color: #d3cfc0;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+  left: 35%;
+  margin-left: -60px;
+}
+
+#tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #d3cfc0 transparent transparent transparent;
+}
+
+#tooltip:hover .tooltiptext {
+  visibility: visible;
 }
