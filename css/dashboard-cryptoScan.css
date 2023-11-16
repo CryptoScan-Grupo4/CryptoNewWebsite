@@ -483,7 +483,6 @@ caption {
 .titulo-tabela p {
   color: #fff;
   font-size: 30px;
-
 }
 
 
@@ -495,9 +494,8 @@ caption {
   justify-content: center;
   flex-direction: column;
   border-radius: 10px;
-  overflow-y: scroll;
-  height: 300px;
-
+  overflow-y: auto;
+  max-height: 340px;
 }
 
 
@@ -507,12 +505,12 @@ table {
   color: #fff;
   border-spacing: 0;
   border-radius: 10px;
-
 }
 
 thead {
   position: sticky;
   top: 0;
+
 }
 
 th {
@@ -527,7 +525,29 @@ table td {
 
 }
 
+.td-maquina{
+  width: 30%;
+}
 
+.situacao{
+  width: 30%;
+}
+
+.setor{
+  width: 28%;
+}
+
+.td-maquina:hover{
+  transition: 1.3s;
+  background-color: #f0bb0b9a;
+  border-radius: 5px;
+}
+
+.td-maquina a:hover{
+  transition: 0.5s;
+  font-size: 17px;
+  text-decoration: underline;
+}
 
 tr td {
   color: white;
@@ -537,6 +557,50 @@ tr {
   background-color: #1f1e1e;
 }
 
+tr i:hover{
+  cursor: pointer;
+}
+
+tr a {
+  text-decoration: none;
+  color: white;
+}
+
 .container-tabela::-webkit-scrollbar {
   display: none;
+}
+
+/* TOOLTIP */
+
+#tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+#tooltip .tooltiptext {
+  visibility: hidden;
+  width: 170px;
+  background-color: #d3cfc0;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 140%;
+}
+
+#tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #d3cfc0 transparent transparent;
+}
+#tooltip:hover .tooltiptext {
+  visibility: visible;
 }
