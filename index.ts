@@ -107,17 +107,83 @@ app.delete('/deletarUsuario/:id', async (req, res) => {
   }
 })
 
+
+
 // Dashboard
 
 app.get('/dadosProcessador', async (req, res) => {
   try {
     const cpuData = await prisma.medida.findMany({
       where: {
-        fkComponente: 1
+        componente: {
+          tipoComponente: "Processador"
+        }
+      },
+      orderBy:{
+        dataHoraMedida: 'desc'
       },
       take: 11
     })
     res.status(200).send(cpuData)
+  } catch (error) {
+    res.status(404).json("Não foi possível encontrar")
+    console.error(error)
+  }
+})
+
+app.get('/dadosRam', async (req, res) => {
+  try {
+    const ramData = await prisma.medida.findMany({
+      where: {
+        componente: {
+          tipoComponente: "Memoria RAM"
+        }
+      },
+      orderBy:{
+        dataHoraMedida: 'desc'
+      },
+      take: 11
+    })
+    res.status(200).send(ramData)
+  } catch (error) {
+    res.status(404).json("Não foi possível encontrar")
+    console.error(error)
+  }
+})
+
+app.get('/dadosDisco', async (req, res) => {
+  try {
+    const discoData = await prisma.medida.findMany({
+      where: {
+        componente: {
+          tipoComponente: "HD"
+        }
+      },
+      orderBy:{
+        dataHoraMedida: 'desc'
+      },
+      take: 11
+    })
+    res.status(200).send(discoData)
+  } catch (error) {
+    res.status(404).json("Não foi possível encontrar")
+    console.error(error)
+  }
+})
+app.get('/dadosGpu', async (req, res) => {
+  try {
+    const gpuData = await prisma.medida.findMany({
+      where: {
+        componente: {
+          tipoComponente: "HD"
+        }
+      },
+      orderBy:{
+        dataHoraMedida: 'desc'
+      },
+      take: 11
+    })
+    res.status(200).send(gpuData)
   } catch (error) {
     res.status(404).json("Não foi possível encontrar")
     console.error(error)

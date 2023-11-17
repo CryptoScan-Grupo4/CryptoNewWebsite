@@ -141,33 +141,33 @@
                 <div class="container-avisos">
                     <div class="container-avisos">
                         <div class="setor">Você está em: <br> Setor 1 <br> Máquina 1</div>
-    
+
                         <span id="spanRam"><b>Uso da RAM</b></span>
-                        <div id="tooltip" class="status-geral" onmouseover="ativarHover()" onmouseleave="desativarHover()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente">7,12 GB</b> <br> <br>Disponível: 8,0 GB
+                        <div id="tooltipRam" class="status-geral" onmouseover="ativarHover()" onmouseleave="desativarHover()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente" id="measureRam">72 GB</b> <br> <br>Disponível: 8,0 GB
                             <span class="tooltiptext"><b>Métricas:</b> <br>
                             🟢: Uso abaixo de 90%. <br>
                             🔴: Uso maior ou igual a 90%.</span>
                         </div>
-    
+
                         <span id="spanGPU"><b>Uso da GPU</b></span>
                         <div id="tooltip" class="status-geral" onmouseover="ativarHoverGPU()" onmouseleave="desativarHoverGPU()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente">1,4 GB</b> <br> <br>Disponível: 3,9 GB
                             <span class="tooltiptext"><b>Métricas:</b> <br>
                                 🟢: Temperatura abaixo de 85°C. <br>
                                 🔴: Temperatura maior ou igual a 85°C.</span>
                         </div>
-    
+
                         <span id="spanCPU"><b>Uso da CPU</b></span>
                         <div id="tooltip" class="status-geral" onmouseover="ativarHoverCPU()" onmouseleave="desativarHoverCPU()"> <br> <b class="uso-componente">263</b> <br> <br>Processos Ativos
                             <span class="tooltiptext">Contagem de Processos ativos atualmente.</span>
                         </div>
-    
+
                         <span id="spanDisco"><b>Uso do Disco</b></span>
                         <div id="tooltip" class="status-geral" onmouseover="ativarHoverDisco()" onmouseleave="desativarHoverDisco()" style="background-color: rgb(91, 152, 0);" > <br> <b class="uso-componente">178 GB</b> <br> <br>Disponível: 220 GB
                             <span class="tooltiptext"><b>Métricas:</b> <br>
                                 🟢: Uso abaixo de 90%. <br>
                                 🔴: Uso maior ou igual a 90%.</span>
                         </div>
-                        
+
                     </div>
               </div>
 
@@ -247,6 +247,7 @@ function desativarHoverDisco() {
 
 </script>
 
+<script src="../node_modules/axios/dist/axios.min.js"></script>
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
@@ -290,6 +291,23 @@ function desativarHoverDisco() {
     };
 </script>
 <script>
+    const getRamData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/dadosRam', []);
+            const ramData = response?.data.map((dadoRam) => dadoRam.medida);
+
+            myChart2.data.datasets[0].data = ramData;
+            myChart2.update();
+            console.log(response)
+            console.log(ramData)
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    setInterval(getRamData, 3000);
+
+    const dadoRam = getRamData()
     const labels_ram = [
         '08:00',
         '09:00',
@@ -310,13 +328,13 @@ function desativarHoverDisco() {
             label: 'Uso da RAM (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [87, 88, 86, 87, 86, 88, 90, 92, 91, 89, 89],
+            data: [],
         },
         {
             label: 'Uso máximo da RAM (%)',
             backgroundColor: 'rgb(255, 0, 0)',
             borderColor: 'rgb(255, 0, 0)',
-            data: [90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90],
+            data: [99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99],
             pointRadius: 0
         }
         ]
@@ -338,12 +356,11 @@ function desativarHoverDisco() {
 <!-- 3 grafico (CPU) -->
 
 
-<script src="../node_modules/axios/dist/axios.min.js"></script>
 <script>
     const getCpuData = async () => {
         try {
             const response = await axios.get('http://localhost:3000/dadosProcessador', []);
-            const cpuData = response?.data.map((dado) => dado.medida);
+            const cpuData = response?.data.map((dadoCpu) => dadoCpu.medida);
 
             myChart3.data.datasets[0].data = cpuData;
             myChart3.update();
@@ -354,8 +371,9 @@ function desativarHoverDisco() {
         }
     };
 
-    setInterval(getCpuData(), 3000);
-    const dado = getCpuData()
+    setInterval(getCpuData, 3000);
+
+    const dadoCpu = getCpuData()
     const labels_cpu = [
         '08:00',
         '09:00',
@@ -405,6 +423,23 @@ function desativarHoverDisco() {
 
 
 <script>
+    const getGpuData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/dadosGpu', []);
+            const gpuData = response?.data.map((dadoGpu) => dadoGpu.medida);
+
+            myChart4.data.datasets[0].data = gpuData;
+            myChart4.update();
+            console.log(response)
+            console.log(gpuData)
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    setInterval(getGpuData, 3000);
+
+    const dadoGpu = getGpuData()
     const labels_placaDeVideo = [
         '08:00',
         '09:00',
@@ -425,7 +460,7 @@ function desativarHoverDisco() {
             label: 'Temp Placa de Vídeo (°C)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [82, 80, 81, 80, 90, 78, 78, 79, 80, 83, 81],
+            data: [],
         },
         {
             label: 'Temperatura Máx (°C)',
@@ -450,6 +485,22 @@ function desativarHoverDisco() {
 </script>
 
 <script>
+    const getDiscoData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/dadosDisco', []);
+            const discoData = response?.data.map((dadoDisco) => dadoDisco.medida);
+
+            myChart6.data.datasets[0].data = discoData;
+            myChart6.update();
+            console.log(response)
+            console.log(discoData)
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    setInterval(getDiscoData, 3000);
+    const dadoDisco = getDiscoData()
     const labels_disco = [
         '08:00',
         '09:00',
@@ -470,7 +521,7 @@ function desativarHoverDisco() {
             label: 'Uso do Disco (%)',
             backgroundColor: '#ffd700',
             borderColor: '#ffd700',
-            data: [87, 89, 88, 90, 89, 89, 91, 90, 88, 87, 89]
+            data: []
         },
         {
             label: 'Uso máximo do Disco (%)',
