@@ -615,12 +615,12 @@ body {
 
 /* TOOLTIP */
 
-#tooltip {
+#tooltipRAM {
   position: relative;
   display: block;
 }
 
-#tooltip .tooltiptext {
+#tooltipRAM .tooltiptext {
   visibility: hidden;
   width: 170px;
   background-color: #d3cfc0;
@@ -635,7 +635,7 @@ body {
   margin-left: -60px;
 }
 
-#tooltip .tooltiptext::after {
+#tooltipRAM .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -646,6 +646,117 @@ body {
   border-color: #d3cfc0 transparent transparent transparent;
 }
 
-#tooltip:hover .tooltiptext {
+#tooltipRAM:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* ////////////////////////////////////// */
+
+#tooltipGPU {
+  position: relative;
+  display: block;
+}
+
+#tooltipGPU .tooltiptext {
+  visibility: hidden;
+  width: 170px;
+  background-color: #d3cfc0;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+  left: 35%;
+  margin-left: -60px;
+}
+
+#tooltipGPU .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #d3cfc0 transparent transparent transparent;
+}
+
+#tooltipGPU:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* ////////////////////////////////////////// */
+
+#tooltipCPU {
+  position: relative;
+  display: block;
+}
+
+#tooltipCPU .tooltiptext {
+  visibility: hidden;
+  width: 170px;
+  background-color: #d3cfc0;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+  left: 35%;
+  margin-left: -60px;
+}
+
+#tooltipCPU .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #d3cfc0 transparent transparent transparent;
+}
+
+#tooltipCPU:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* ///////////////////////////////////////// */
+
+#tooltipDisco {
+  position: relative;
+  display: block;
+}
+
+#tooltipDisco .tooltiptext {
+  visibility: hidden;
+  width: 170px;
+  background-color: #d3cfc0;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+  left: 35%;
+  margin-left: -60px;
+}
+
+#tooltipDisco .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #d3cfc0 transparent transparent transparent;
+}
+
+#tooltipDisco:hover .tooltiptext {
   visibility: visible;
 }
