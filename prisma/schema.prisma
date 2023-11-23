@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
 
@@ -85,7 +85,7 @@ model setor {
 model setup {
   idSetup      Int          @default(autoincrement()) @unique
   fkComputador Int
-  dataCriacao  DateTime     @default(now()) @db.Timestamp(0)
+  dataCriacao  DateTime     @default(now())
   componente   componente[]
   medida       medida[]
   computador   computador   @relation(fields: [fkComputador], references: [idComputador], onDelete: NoAction, onUpdate: NoAction, map: "setup_ibfk_1")
@@ -103,14 +103,14 @@ model tipoconta {
 model token {
   idToken     Int       @id @default(autoincrement())
   token       String?   @db.VarChar(45)
-  dataEmitida DateTime  @default(now()) @db.Timestamp(0)
+  dataEmitida DateTime  @default(now())
   empresa     empresa[]
 }
 
 model medida {
   idMedida       Int        @default(autoincrement())
   medida         Float?     @db.Float
-  dataHoraMedida DateTime   @default(now()) @db.Timestamp(0)
+  dataHoraMedida DateTime   @default(now())
   fkComponente   Int
   fkSetup        Int
   componente     componente @relation(fields: [fkComponente], references: [idComponente], onDelete: NoAction, onUpdate: NoAction, map: "medida_ibfk_1")
