@@ -165,7 +165,7 @@
 <script>
   async function cadastrarFuncionario(nome, email, senha, repetirSenha, cpf, codEmp) {
   if (senha === repetirSenha) {
-    await axios.post('http://localhost:3000/cadastrarFuncionario', {
+    await axios.post('http://34.232.200.187:3000/cadastrarFuncionario', {
       nome: nome,
       email: email,
       senha: senha,
@@ -191,7 +191,7 @@
 async function loginFuncionario(email, senha) {
   if (email !== undefined && senha !== undefined && email !== "" && senha !== "") {
     try {
-      const response = await axios.get('http://localhost:3000/funcionario', {
+      const response = await axios.get('http://34.232.200.187:3000/funcionario', {
         params: {
           email: email,
           senha: senha
