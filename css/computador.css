@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+
+
+.container-crud h1 {
+    justify-content: first baseline;
+    color: white;
+    font-size: 2.5rem;
+
+}
+
+.container-crud{
+margin-left: 4rem;
+margin-top: 1rem;
+height: 60rem;
+width: 70rem;
+
+
+}
+
+input {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    width: 60rem;
+    color: white;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: none;
+    outline: none;
+    border-bottom: 0.1rem #f0b90b solid;
+}
+/* 
+button{
+    background-color: #F0B90B;
+    border-radius: 5px;
+    width: 3rem;
+    height: 2rem;
+} */
+
+
+button {
+   margin-left: 5rem;
+    width: 3rem;
+    margin: 14px auto;
+    outline: none;
+    border-radius: 6px; 
+    padding: 8px 10px; 
+    width: 6rem;
+    border: none;
+    background-color: #f0b90b;
+    color: white;
+
+  }
+
+.campo{
+    background-color: #1f1e1e;
+    width: 82rem;
+    height: 25rem;
+    border-radius: 10px;
+}

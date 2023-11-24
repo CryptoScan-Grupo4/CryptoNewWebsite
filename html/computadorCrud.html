@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Computador</title>
+    <script src="../js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard-cryptoScan.css">
+    <link rel="stylesheet" href="../css/computador.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/your-path-to-uicons/css/uicons-rounded-regular.css" rel="stylesheet">
+  <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
+  <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bx-code-alt'></i>
+            <span class="logo_name">Crypto Scan</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="../dashboard-cryptoScan.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Painel</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="../dashboard-cryptoScan.html">Painel</a></li>
+                </ul>
+            </li>
+            <!-- <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 1</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 1</a></li>
+                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                </ul>
+            </li> -->
+            <!-- <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 2</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 2</a></li>
+                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                    <li><a href="#">Máquina 4</a></li>
+                </ul>
+            </li> -->
+            <li>
+                <a href="/cadastroFuncionario.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Cadastrar Funcionários</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/cadastroFuncionario.html">Cadastrar Funcionários</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">Chart</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Chart</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link_name">Histórico</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Histórico</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name" id="profile_name"></div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+        </div>
+
+        <div class="container-crud">
+            
+            <h1>Computador</h1>
+      
+            <input placeholder="Pesquisar">
+      
+           <button>Criar</button>
+
+        <div class="campo">
+         
+    <div class="divTable-computador">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Serial</th>
+              <th>Status</th>
+              <th>Empresa</th>
+              <th>Setor</th>
+              <th>Editar</th>
+              <th>Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>1</td>
+                <td>1°</td>
+                <td>Boa</td>
+                <td>Crypto</td>
+                <td>11</td>
+                <td><img src="../img/edit.png" alt=""></td>
+                <td><img src="../img/trash1.png" alt=""></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1°</td>
+                <td>Ruim</td>
+                <td>Crypto</td>
+                <td>5</td>
+                <td><img src="../img/edit.png" alt=""></td>
+                <td><img src="../img/trash1.png" alt=""></td>
+          
+           
+
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4°</td>
+                <td>Boa</td>
+                <td>Crypto</td>
+                <td>2</td>
+                <td><img src="../img/edit.png" alt=""></td>
+                <td><img src="../img/trash1.png" alt=""></td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>4°</td>
+                <td>Boa</td>
+                <td>Crypto</td>
+                <td>2</td>
+                <td><img src="../img/edit.png" alt=""></td>
+                <td><img src="../img/trash1.png" alt=""></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+  
+      
+        </div>
+    </div>
+   
+  
+  
+</section>
+
+</div>
+<script src="script.js"></script>
+</body>
