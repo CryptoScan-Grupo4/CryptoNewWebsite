@@ -175,7 +175,7 @@ app.get('/dadosGpu', async (req, res) => {
     const gpuData = await prisma.medida.findMany({
       where: {
         componente: {
-          tipoComponente: "HD"
+          tipoComponente: "GPU"
         }
       },
       orderBy:{
