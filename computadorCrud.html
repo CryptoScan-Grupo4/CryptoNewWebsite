@@ -12,8 +12,8 @@
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="/your-path-to-uicons/css/uicons-rounded-regular.css" rel="stylesheet">
-  <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
-  <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
+    <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
+    <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -25,15 +25,15 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="../dashboard-cryptoScan.html">
+                <a href="dashboard-cryptoScan.html">
                     <i class='bx bx-grid-alt'></i>
                     <span class="link_name">Painel</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="../dashboard-cryptoScan.html">Painel</a></li>
+                    <li><a class="link_name" href="dashboard-cryptoScan.html">Painel</a></li>
                 </ul>
             </li>
-            <!-- <li>
+            <li>
                 <div class="iocn-link">
                     <a href="#">
                         <i class='bx bxs-business'></i>
@@ -43,12 +43,11 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Setor 1</a></li>
-                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="./dashboardMonitoramento.html">Máquina 1</a></li>
                     <li><a href="#">Máquina 2</a></li>
-                    <li><a href="#">Máquina 3</a></li>
                 </ul>
-            </li> -->
-            <!-- <li>
+            </li>
+            <li>
                 <div class="iocn-link">
                     <a href="#">
                         <i class='bx bxs-business'></i>
@@ -63,7 +62,7 @@
                     <li><a href="#">Máquina 3</a></li>
                     <li><a href="#">Máquina 4</a></li>
                 </ul>
-            </li> -->
+            </li>
             <li>
                 <a href="/cadastroFuncionario.html">
                     <i class='bx bx-user'></i>
@@ -74,22 +73,21 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
-                    <i class='bx bx-line-chart'></i>
-                    <span class="link_name">Chart</span>
+                <a href="../setorCRUD.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Cadastrar Setor</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Chart</a></li>
+                    <li><a class="link_name" href="../setorCRUD.html">Cadastrar Setor</a></li>
                 </ul>
             </li>
-
             <li>
-                <a href="#">
-                    <i class='bx bx-history'></i>
-                    <span class="link_name">Histórico</span>
+                <a href="../computadorCrud.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Cadastrar Computador</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Histórico</a></li>
+                    <li><a class="link_name" href="../computadorCrud.html">Cadastrar Computador</a></li>
                 </ul>
             </li>
             <li>
@@ -119,84 +117,91 @@
         </div>
 
         <div class="container-crud">
-            
+
             <h1>Computador</h1>
-      
+
             <input placeholder="Pesquisar">
-      
-           <button>Criar</button>
 
-        <div class="campo">
-         
-    <div class="divTable-computador">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Serial</th>
-              <th>Status</th>
-              <th>Empresa</th>
-              <th>Setor</th>
-              <th>Editar</th>
-              <th>Excluir</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>1</td>
-                <td>1°</td>
-                <td>Boa</td>
-                <td>Crypto</td>
-                <td>11</td>
-                <td><img src="../img/edit.png" alt=""></td>
-                <td><img src="../img/trash1.png" alt=""></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1°</td>
-                <td>Ruim</td>
-                <td>Crypto</td>
-                <td>5</td>
-                <td><img src="../img/edit.png" alt=""></td>
-                <td><img src="../img/trash1.png" alt=""></td>
-          
-           
+            <button onclick="changePage()">
+                Criar
+            </button>
 
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>4°</td>
-                <td>Boa</td>
-                <td>Crypto</td>
-                <td>2</td>
-                <td><img src="../img/edit.png" alt=""></td>
-                <td><img src="../img/trash1.png" alt=""></td>
-            </tr>
+            <div class="campo">
 
-            <tr>
-                <td>3</td>
-                <td>4°</td>
-                <td>Boa</td>
-                <td>Crypto</td>
-                <td>2</td>
-                <td><img src="../img/edit.png" alt=""></td>
-                <td><img src="../img/trash1.png" alt=""></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
+                <div class="divTable-computador">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Serial</th>
+                                <th>Status</th>
+                                <th>Empresa</th>
+                                <th>Setor</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1°</td>
+                                <td>Boa</td>
+                                <td>Crypto</td>
+                                <td>11</td>
+                                <td><img src="../img/edit.png" alt=""></td>
+                                <td><img src="../img/trash1.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1°</td>
+                                <td>Ruim</td>
+                                <td>Crypto</td>
+                                <td>5</td>
+                                <td><img src="../img/edit.png" alt=""></td>
+                                <td><img src="../img/trash1.png" alt=""></td>
 
 
-  
-      
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>4°</td>
+                                <td>Boa</td>
+                                <td>Crypto</td>
+                                <td>2</td>
+                                <td><img src="../img/edit.png" alt=""></td>
+                                <td><img src="../img/trash1.png" alt=""></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>4°</td>
+                                <td>Boa</td>
+                                <td>Crypto</td>
+                                <td>2</td>
+                                <td><img src="../img/edit.png" alt=""></td>
+                                <td><img src="../img/trash1.png" alt=""></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+            </div>
         </div>
-    </div>
-   
-  
-  
-</section>
 
-</div>
-<script src="script.js"></script>
+
+
+    </section>
+
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function changePage () {
+            window.location = './cadastroComputador.html'
+        }
+    </script>
 </body>
