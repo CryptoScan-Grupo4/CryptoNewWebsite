@@ -17,7 +17,7 @@ model funcionario {
   fkTipoConta      Int
   fkEmpresa        Int?
   empresa          empresa?  @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "funcionario_ibfk_1")
-  tipoconta        tipoconta @relation(fields: [fkTipoConta], references: [idTipoConta], onDelete: NoAction, onUpdate: NoAction, map: "funcionario_ibfk_2")
+  tipoconta        tipoconta @relation(fields: [fkTipoConta], references: [idTipoConta], onUpdate: NoAction, map: "funcionario_ibfk_2")
   setor            setor[]
 
   @@index([fkEmpresa], map: "fkEmpresa")
@@ -38,12 +38,12 @@ model componente {
 }
 
 model computador {
-  idComputador     Int     @default(autoincrement()) @unique
+  idComputador     Int     @unique @default(autoincrement())
   serialComputador String? @db.VarChar(45)
   statusAtividade  String? @db.VarChar(10)
   fkEmpresa        Int
   fkSetor          Int?
-  empresa          empresa @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "computador_ibfk_1")
+  empresa          empresa @relation(fields: [fkEmpresa], references: [idEmpresa], onUpdate: NoAction, map: "computador_ibfk_1")
   setor            setor?  @relation(fields: [fkSetor], references: [idSetor], onDelete: NoAction, onUpdate: NoAction, map: "computador_ibfk_2")
   setup            setup[]
 
@@ -69,13 +69,13 @@ model empresa {
 }
 
 model setor {
-  idSetor                  Int          @default(autoincrement()) @unique
+  idSetor                  Int          @unique @default(autoincrement())
   Andar                    String?      @db.VarChar(45)
   fkEmpresa                Int
   fkFuncionarioResponsavel Int?
   computador               computador[]
   funcionario              funcionario? @relation(fields: [fkFuncionarioResponsavel], references: [idFuncionario], onDelete: NoAction, onUpdate: NoAction, map: "setor_ibfk_1")
-  empresa                  empresa      @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "setor_ibfk_2")
+  empresa                  empresa      @relation(fields: [fkEmpresa], references: [idEmpresa], onUpdate: NoAction, map: "setor_ibfk_2")
 
   @@id([idSetor, fkEmpresa])
   @@index([fkEmpresa], map: "fkEmpresa")
@@ -83,12 +83,12 @@ model setor {
 }
 
 model setup {
-  idSetup      Int          @default(autoincrement()) @unique
+  idSetup      Int          @unique @default(autoincrement())
   fkComputador Int
   dataCriacao  DateTime     @default(now())
   componente   componente[]
   medida       medida[]
-  computador   computador   @relation(fields: [fkComputador], references: [idComputador], onDelete: NoAction, onUpdate: NoAction, map: "setup_ibfk_1")
+  computador   computador   @relation(fields: [fkComputador], references: [idComputador], onUpdate: NoAction, map: "setup_ibfk_1")
 
   @@id([idSetup, fkComputador])
   @@index([fkComputador], map: "fkComputador")
@@ -109,12 +109,12 @@ model token {
 
 model medida {
   idMedida       Int        @default(autoincrement())
-  medida         Float?     @db.Float
+  medida         Float?
   dataHoraMedida DateTime   @default(now())
   fkComponente   Int
   fkSetup        Int
-  componente     componente @relation(fields: [fkComponente], references: [idComponente], onDelete: NoAction, onUpdate: NoAction, map: "medida_ibfk_1")
-  setup          setup      @relation(fields: [fkSetup], references: [idSetup], onDelete: NoAction, onUpdate: NoAction, map: "medida_ibfk_2")
+  componente     componente @relation(fields: [fkComponente], references: [idComponente], onUpdate: NoAction, map: "medida_ibfk_1")
+  setup          setup      @relation(fields: [fkSetup], references: [idSetup], onUpdate: NoAction, map: "medida_ibfk_2")
 
   @@id([idMedida, fkComponente, fkSetup])
   @@index([fkSetup], map: "fkSetup")
@@ -124,7 +124,7 @@ model medida {
 model unidadecomponente {
   idUnidadeComponente Int         @id @default(autoincrement())
   unidadeComponente   String?     @db.VarChar(45)
-  totalComponente     Float?      @db.Float
+  totalComponente     Float?
   fkComponente        Int?
   componente          componente? @relation(fields: [fkComponente], references: [idComponente], onDelete: NoAction, onUpdate: NoAction, map: "unidadecomponente_ibfk_1")
 
