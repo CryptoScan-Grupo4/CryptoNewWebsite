@@ -144,7 +144,7 @@
 
                         <span id="spanRam"><b>Uso da RAM</b></span>
                         <div id="tooltipRAM" class="status-geral" onmouseover="ativarHover()"
-                            onmouseleave="desativarHover()"> <br> <b class="uso-componente">7,12 GB</b> <br>
+                            onmouseleave="desativarHover()"> <br> <b class="uso-componente" id="usoRam">7,12 GB</b> <br>
                             <br>Disponível: 8,0 GB
                             <span class="tooltiptext"><b>Métricas:</b> <br>
                                 🟢: Uso abaixo de 90%. <br>
@@ -153,7 +153,7 @@
 
                         <span id="spanGPU"><b>Uso da GPU</b></span>
                         <div id="tooltipGPU" class="status-geral" onmouseover="ativarHoverGPU()"
-                            onmouseleave="desativarHoverGPU()"> <br> <b class="uso-componente">1,4 GB</b> <br>
+                            onmouseleave="desativarHoverGPU()"> <br> <b class="uso-componente" id="usoGpu">1,4 GB</b> <br>
                             <br>Disponível: 3,9 GB
                             <span class="tooltiptext"><b>Métricas:</b> <br>
                                 🟢: Temperatura abaixo de 85°C. <br>
@@ -162,14 +162,14 @@
 
                         <span id="spanCPU"><b>Uso da CPU</b></span>
                         <div id="tooltipCPU" class="status-geral" onmouseover="ativarHoverCPU()"
-                            onmouseleave="desativarHoverCPU()"> <br> <b class="uso-componente">263</b> <br>
+                            onmouseleave="desativarHoverCPU()"> <br> <b class="uso-componente" id="usoCpu">263</b> <br>
                             <br>Processos Ativos
                             <span class="tooltiptext">Contagem de Processos ativos atualmente.</span>
                         </div>
 
                         <span id="spanDisco"><b>Uso do Disco</b></span>
                         <div id="tooltipDisco" class="status-geral" onmouseover="ativarHoverDisco()"
-                            onmouseleave="desativarHoverDisco()"> <br> <b class="uso-componente">178 GB</b> <br>
+                            onmouseleave="desativarHoverDisco()"> <br> <b class="uso-componente" id="usoDisco">178 GB</b> <br>
                             <br>Disponível: 220 GB
                             <span class="tooltiptext"><b>Métricas:</b> <br>
                                 🟢: Uso abaixo de 90%. <br>
@@ -216,11 +216,6 @@
     var limiteRAM = 70
     var limiteGPU = 60
     var limiteDisco = 70
-
-
-
-
-
 
 
     function ativarHover() {
@@ -325,6 +320,8 @@
                 // Pinta de verde
                 divIndicadorRAM.style.backgroundColor = 'rgb(91, 152, 0)'
             }
+            var usoRam = document.getElementById('usoRam')
+            usoRam.innerHTML = `${response.data[0].medida}%`
             console.log(response)
             console.log(ramData)
         } catch (error) {
@@ -393,6 +390,8 @@
 
             myChart3.data.datasets[0].data = cpuData
             myChart3.update()
+            var usoCpu = document.getElementById('usoCpu')
+            usoCpu.innerHTML = `${parseInt(response.data[0].medida)}%`
             console.log(response)
             console.log(cpuData)
         } catch (error) {
@@ -468,6 +467,8 @@
                 // Pinta de verde
                 divIndicadorGPU.style.backgroundColor = 'rgb(91, 152, 0)'
             }
+            var usoGpu = document.getElementById('usoGpu')
+            usoGpu.innerHTML = `${parseInt(response.data[0].medida)}°C`
             console.log(response)
             console.log(gpuData)
         } catch (error) {
@@ -539,6 +540,8 @@
                 // Pinta de verde
                 divIndicadorDisco.style.backgroundColor = 'rgb(91, 152, 0)'
             }
+            var usoDisco = document.getElementById('usoDisco')
+            usoDisco.innerHTML = `${parseInt(response.data[0].medida)}%`
             console.log(response)
             console.log(discoData)
         } catch (error) {
