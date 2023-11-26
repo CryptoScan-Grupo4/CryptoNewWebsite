@@ -43,6 +43,21 @@ app.post('/cadastrarFuncionario', async (req, res) => {
   }
 })
 
+app.post('/cadastrarSetor', async (req, res) => {
+  const andar = req.body.andar
+  const codFunc = req.body.codFunc
+  const codEmp = req.body.codEmp
+
+  await prisma.setor.create({
+    data: {
+      Andar: andar,
+      fkEmpresa: codEmp,
+      fkFuncionarioResponsavel: codFunc
+    }
+  })
+  res.status(201).send("Setor criado com sucesso")
+})
+
 app.get('/funcionario', async (req, res) => {
   const email: any = req.query.email
   const senha: any = req.query.senha
