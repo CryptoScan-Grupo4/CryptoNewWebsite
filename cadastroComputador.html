@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Computador</title>
-    <link rel="stylesheet" href="../css/cadastroComputador.css">
+    <link rel="stylesheet" href="./css/cadastroComputador.css">
     <meta charset="UTF-8">
     <script src="/js/menu.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,7 +44,7 @@
                     <li><a href="#">Máquina 2</a></li>
                 </ul>
             </li>
-             <li>
+            <li>
                 <div class="iocn-link">
                     <a href="#">
                         <i class='bx bxs-business'></i>
@@ -117,95 +117,76 @@
 
         <div class="maincadastro">
             <p class="titulo2">Cadastrar Computador</p>
-            <div class="campos1">
+            <div class="campos1" style="top: 20%;">
 
                 <label for="Computador">Computador: </label>
+                <label for="serial_input">Serial:</label>
                 <div class="input-div">
-                    <input data-aos="fade-up" type="Computador" name="Computador" id="computador_input"
-                        placeholder="Insira seu nome completo">
-                    </input>
-                    <br>
-                </div>
-
-                <label for="Email">Serial:</label>
-                <div class="input-div">
-                    <input data-aos="fade-up" type="Serial" name="Serial" id="serial_input"
-                        placeholder="Serial">
+                    <input data-aos="fade-up" name="Serial" id="serial_input" placeholder="Insira o Serial Number do computador">
                     </input>
                     <br>
                 </div>
 
                 <label for="Setor">Setor:</label>
                 <div class="input-div">
-                    <input type="setor" name="setor" id="setor_input" placeholder="Setor">
+                    <input type="setor" name="setor" id="setor_input" placeholder="Insira o código do setor">
                     </input>
                     <br>
                 </div>
-
-
-                <label for="CPF" style=" visibility: hidden;">CPF:</label>
-                <div class="input-div" style=" visibility: hidden;">
-                    <input data-aos="fade-up" type="CPF" name="CPF" id="cpf_input" placeholder="000.000.000-00">
-                    </input>
-                    <br>
-                </div>
-
-
             </div>
 
 
-            <div class="campos2">
-
-                <label for="Empresa">Empresa:</label>
+            <div class="campos2" style="bottom: 9%;">
+                <label for="codEmpresa_input">Empresa:</label>
                 <div class="input-div">
-                    <input type="password" id="empresa_input" placeholder="*******">
+                    <input id="codEmpresa_input" placeholder="Insira o código da empresa">
                 </div>
 
-                <label for="Senha" style="visibility: hidden;">Repetir Senha:</label>
-                <div class="input-div" style=" visibility: hidden;">
-                    <img class="icon-input" src="" alt="">
-                    <input type="password" id="repetir_senha_input" placeholder="*******">
-                </div>
-
-                <label for="codEmp" style=" visibility: hidden;">Código da empresa:</label>
-                <div class="input-div" style=" visibility: hidden;">
-                    <input data-aos="fade-up" type="codEmp" name="codEmp" id="codEmp_input"
-                        placeholder="Insira o código da empresa">
-                    </input>
-                    <br>
-                </div>
-            </div>
-
-
-            <div class="container-select">
-                <label class="label-select" for="tipoConta">Tipo do Status</label>
-                <select name="tipoConta" id="tipoConta">
-                    <option value="0">--Selecione o tipo do Status--</option>
-                    <option value="1">Ativo</option>
-                    <option value="2">Desativo</option>
+                <select name="tipoStatus" id="tipoStatus" style="width: 51%">
+                    <option >--Selecione o tipo do Status--</option>
+                    <option value="On">Ativo</option>
+                    <option value="Off">Inativo</option>
                 </select>
             </div>
 
+
+            <div class="container-select" style="visibility: hidden;"></div>
+
             <button class="btn-cadastrar"
-                onclick="cadastrarFuncionario(computador_input.value, serial_input.value, setor_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value))">
+            style="bottom: 12%;"
+                onclick="cadastrarComputador(serial_input.value, Number(codEmpresa_input.value), Number(setor_input.value), tipoStatus.value)">
                 Cadastrar
             </button>
 
         </div>
     </section>
 </body>
+
+<script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
-    let arrow = document.querySelectorAll(".arrow");
+    let arrow = document.querySelectorAll(".arrow")
     for (var i = 0; i < arrow.length; i++) {
         arrow[i].addEventListener("click", (e) => {
-            let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-            arrowParent.classList.toggle("showMenu");
-        });
+            let arrowParent = e.target.parentElement.parentElement//selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu")
+        })
     }
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
+    let sidebar = document.querySelector(".sidebar")
+    let sidebarBtn = document.querySelector(".bx-menu")
+    console.log(sidebarBtn)
     sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
+        sidebar.classList.toggle("close")
     });
+
+    async function cadastrarComputador (serial, codEmp, codSetor, status) {
+        await axios.post('http://34.232.200.187:3000/cadastrarComputador', {
+        serial: serial,
+        codEmp: codEmp,
+        codSetor: codSetor,
+        status: status
+    }).then((response) => {
+        window.location = './computadorCrud.html'
+      console.log(response.data);
+    })
+    }
 </script>

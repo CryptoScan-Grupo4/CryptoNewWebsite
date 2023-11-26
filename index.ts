@@ -58,6 +58,23 @@ app.post('/cadastrarSetor', async (req, res) => {
   res.status(201).send("Setor criado com sucesso")
 })
 
+app.post('/cadastrarComputador', async (req, res) => {
+  const serial = req.body.serial
+  const codSetor = req.body.codSetor
+  const status = req.body.status
+  const codEmp = req.body.codEmp
+
+  await prisma.computador.create({
+    data: {
+      serialComputador: serial,
+      fkEmpresa: codEmp,
+      fkSetor: codSetor,
+      statusAtividade: status
+    }
+  })
+  res.status(201).send("Computador cadastrado com sucesso")
+})
+
 app.get('/funcionario', async (req, res) => {
   const email: any = req.query.email
   const senha: any = req.query.senha
