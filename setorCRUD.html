@@ -12,8 +12,8 @@
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="/your-path-to-uicons/css/uicons-rounded-regular.css" rel="stylesheet">
-  <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
-  <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
+    <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
+    <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -119,70 +119,77 @@
         </div>
 
         <div class="container-crud">
-            
+
             <h1>Setor</h1>
-      
+
             <input placeholder="Pesquisar">
-      
-           <button>Criar</button>
 
-        <div class="campo">
-         
-    <div class="divTable-setor">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Andar</th>
-              <th>Empresa</th>
-              <th>Funcionário</th>
-              <th>Editar</th>
-              <th>Excluir</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>1</td>
-                <td>1°</td>
-                <td>Mineradora bitcoin</td>
-                <td>Xampson</td>
-                <td><img src="img/edit.png" alt=""></td>
-                <td><img src="img/trash1.png" alt=""></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1°</td>
-                <td>Mineradora bitcoin</td>
-                <td>Javito</td>
-                <td><img src="img/edit.png" alt=""></td>
-                <td><img src="img/trash1.png" alt=""></td>
-          
-           
+            <button onclick="createSector()">
+                Criar
+            </button>
 
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>4°</td>
-                <td>Mineradora bitcoin</td>
-                <td>Xampson</td>
-                <td><img src="img/edit.png" alt=""></td>
-                <td><img src="img/trash1.png" alt=""></td>
-            </tr>
+            <div class="campo">
 
-          </tbody>
-        </table>
-      </div>
+                <div class="divTable-setor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Andar</th>
+                                <th>Empresa</th>
+                                <th>Funcionário</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1°</td>
+                                <td>Mineradora bitcoin</td>
+                                <td>Xampson</td>
+                                <td><img src="img/edit.png" alt=""></td>
+                                <td><img src="img/trash1.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1°</td>
+                                <td>Mineradora bitcoin</td>
+                                <td>Javito</td>
+                                <td><img src="img/edit.png" alt=""></td>
+                                <td><img src="img/trash1.png" alt=""></td>
 
 
-  
-      
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>4°</td>
+                                <td>Mineradora bitcoin</td>
+                                <td>Xampson</td>
+                                <td><img src="img/edit.png" alt=""></td>
+                                <td><img src="img/trash1.png" alt=""></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+            </div>
         </div>
-    </div>
-   
-  
-  
-</section>
 
-</div>
-<script src="script.js"></script>
+
+
+    </section>
+
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function createSector() {
+            window.location = './cadastroSetor.html'
+        }
+    </script>
 </body>

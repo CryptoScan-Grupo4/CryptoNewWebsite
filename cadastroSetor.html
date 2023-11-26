@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Funcionário</title>
+    <link rel="stylesheet" href="css/cadastroFuncionario.css">
+    <meta charset="UTF-8">
+    <script src="/js/menu.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bx-code-alt'></i>
+            <span class="logo_name">Crypto Scan</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="dashboard-cryptoScan.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Painel</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="dashboard-cryptoScan.html">Painel</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 1</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 1</a></li>
+                    <li><a href="./dashboardMonitoramento.html">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bxs-business'></i>
+                        <span class="link_name">Setor 2</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Setor 2</a></li>
+                    <li><a href="#">Máquina 1</a></li>
+                    <li><a href="#">Máquina 2</a></li>
+                    <li><a href="#">Máquina 3</a></li>
+                    <li><a href="#">Máquina 4</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/cadastroFuncionario.html">
+                    <i class='bx bx-user'></i>
+                    <span class="link_name">Cadastrar Funcionários</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/cadastroFuncionario.html">Cadastrar Funcionários</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name" id="profile_name"></div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+        </div>
+
+
+
+        <div class="maincadastro">
+            <p class="titulo2">Cadastrar Setor</p>
+            <div class="campos1" style="top: 25%;">
+
+                <label for="andar_input">Andar: </label>
+                <div class="input-div">
+                    <input data-aos="fade-up" name="andar_setor" id="andar_input"
+                        placeholder="Insira o andar do setor">
+                    </input>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="campos2" style="bottom: -6%;">
+
+              <label for="empresa_input">Empresa: </label>
+              <div class="input-div">
+                  <input data-aos="fade-up" name="empresa_setor" id="empresa_input"
+                      placeholder="Insira o código da empresa">
+                  </input>
+                  <br>
+              </div>
+
+              <label for="funcionario_input">Funcionário: </label>
+              <div class="input-div">
+                  <input data-aos="fade-up" name="funcionario_setor" id="funcionario_input"
+                      placeholder="Insira o código da funcionário">
+                  </input>
+                  <br>
+              </div>
+            </div>
+
+
+            <button class="btn-cadastrar"
+              style="bottom: -26%;"
+                onclick="cadastrarSetor(andar_input.value, funcionario_input.value, empresa_input.value)">
+                Cadastrar Setor
+            </button>
+
+        </div>
+    </section>
+</body>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script>
+    let arrow = document.querySelectorAll(".arrow")
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement//selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu")
+        })
+    }
+    let sidebar = document.querySelector(".sidebar")
+    let sidebarBtn = document.querySelector(".bx-menu")
+    console.log(sidebarBtn)
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close")
+    });
+
+    async function cadastrarSetor(andar, codFunc, codEmp) {
+      await axios.post('http://34.232.200.187:3000/cadastrarFuncionario', {
+        andar: andar,
+        codEmp: codEmp,
+        codFunc: codFunc
+    }).then((response) => {
+      console.log(response.data);
+    })
+    }
+</script>
