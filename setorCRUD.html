@@ -147,7 +147,11 @@
                 </div>
 
 
-
+                <td>
+                    <button onclick="">
+                        <img src="img/trash1.png" alt="">
+                    </button>
+                </td>
 
             </div>
         </div>
@@ -187,5 +191,14 @@
         }
 
         getSector()
+
+        async function deleteSector(id) {
+            await axios.delete('http://34.232.200.187:3000/deletarSetor', {
+                id: id
+            }).then((response) => {
+                console.log(response.data)
+                getSector()
+            })
+        }
     </script>
 </body>

@@ -197,6 +197,21 @@ app.patch('/esqueciSenha/:id', async (req, res) => {
   }
 })
 
+app.delete('/deletarSetor', async (req, res) => {
+  const sectorId = req.body.sectorId
+
+  try {
+    await prisma.setor.delete({
+      where: {
+        idSetor: sectorId
+      }
+    })
+  } catch (error) {
+    res.status(304)
+    console.error(error)
+  }
+})
+
 app.delete('/deletarUsuario/:id', async (req, res) => {
   const userId = Number(req.params.id)
   try {
