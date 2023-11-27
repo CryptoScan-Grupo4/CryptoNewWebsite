@@ -173,9 +173,7 @@
                     <td>${sector.funcionario.nomeFuncionario || ''}</td>
                     <td><a href="./editSector.html?id=${sector.idSetor}"><img src="img/edit.png" alt=""/></a></td>
                     <td>
-                    <button onclick="deleteSector(${Number(sector.idSetor)})">
-                        <img src="img/trash1.png" alt="">
-                    </button>
+                        <img src="img/trash1.png" alt="" onclick="deleteSector(${Number(sector.idSetor)})">
                     </td>
                 </tr>`
                 })
