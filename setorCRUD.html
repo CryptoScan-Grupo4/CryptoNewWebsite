@@ -187,13 +187,19 @@
         getSector()
 
         async function deleteSector(id, codEmp) {
-            await axios.delete('http://34.232.200.187:3000/deletarSetor', {
+    try {
+        await axios.delete('http://34.232.200.187:3000/deletarSetor', {
+            data: {
                 id: id,
                 codEmp: codEmp
-            }).then((response) => {
-                console.log(response.data)
-                getSector()
-            })
-        }
+            }
+        });
+        console.log('Setor deletado com sucesso!');
+        getSector();
+    } catch (error) {
+        console.error('Erro ao deletar setor:', error);
+    }
+}
+
     </script>
 </body>
