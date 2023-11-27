@@ -104,6 +104,7 @@ app.get('/computer', async (req, res) => {
         idComputador: true,
         serialComputador: true,
         statusAtividade: true,
+        fkEmpresa: true,
         empresa: {
           select: {
             nomeEmpresa: true
