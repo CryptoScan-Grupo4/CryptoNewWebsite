@@ -166,7 +166,7 @@
 
         async function getSector () {
             try {
-                const response = await axios.get('http://34.232.200.187:3000/sectors', []);
+                const response = await axios.get('http://34.232.200.187:3000/sector', []);
                 let sectorsHTML = ''
 
                 response?.data.forEach((sector) => {
