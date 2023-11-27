@@ -171,15 +171,18 @@
         let computersHTML = ''
 
         response?.data.forEach((computer) => {
-            computersHTML += `<tr>
-                <td>${computer.idComputador}</td>
-                <td>${computer.serialComputador}</td>
-                <td>${computer.statusAtividade}</td>
-                <td>${computer.empresa.nomeEmpresa}</td>
-                <td>${computer.setor.Andar}</td>
-                <td><a href="./editComputador.html?id=${computer.idComputador}"><img src="img/edit.png" alt=""/></a></td>
-                <td><img src="../img/trash1.png" alt=""></td>
-            </tr>`;
+            if (computer.statusAtividade === "On") {
+
+                computersHTML += `<tr>
+                    <td>${computer.idComputador}</td>
+                    <td>${computer.serialComputador}</td>
+                    <td>${computer.statusAtividade}</td>
+                    <td>${computer.empresa.nomeEmpresa}</td>
+                    <td>${computer.setor.Andar}</td>
+                    <td><a href="./editComputador.html?id=${computer.idComputador}"><img src="img/edit.png" alt=""/></a></td>
+                    <td><img src="../img/trash1.png" alt=""></td>
+                </tr>`;
+            }
         });
 
         createdComputers.innerHTML = computersHTML;
