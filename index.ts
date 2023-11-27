@@ -149,7 +149,7 @@ app.get('/sector', async (req, res) => {
 app.patch('/editarSetor/:id', async (req, res) => {
   const sectorId = Number(req.params.id)
   const andar = req.body.andar
-  const codFuncionario = req.body.funcionario
+  const codFuncionario = req.body.codFuncionario
 
   try {
     await prisma.setor.update({
