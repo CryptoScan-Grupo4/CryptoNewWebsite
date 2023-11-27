@@ -154,7 +154,7 @@
 
             <button class="btn-cadastrar"
             style="bottom: 12%;"
-                onclick="editarComputador(serial_input.value, Number(setor_input.value), tipoStatus.value)">
+                onclick="editarComputador(tipoStatus.value)">
                 Editar computador
             </button>
 
@@ -182,10 +182,8 @@
     var params = new URLSearchParams(queryString)
     var id = params.get('id')
 
-    async function editarComputador (serial, codSetor, status) {
+    async function editarComputador (status) {
         await axios.post(`http://34.232.200.187:3000/editarComputador/${id}`, {
-        serial: serial,
-        setor: codSetor,
         status: status
     }).then((response) => {
         window.location = './computadorCrud.html'

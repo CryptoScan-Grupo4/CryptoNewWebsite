@@ -115,6 +115,9 @@ app.get('/computer', async (req, res) => {
             Andar: true
           }
         }
+      },
+      where: {
+        statusAtividade: "On"
       }
     })
     res.status(200).send(computers)
@@ -171,9 +174,7 @@ app.patch('/editarSetor/:id', async (req, res) => {
 
 app.patch('/editarComputador/:id', async (req, res) => {
   const computerId = Number(req.params.id)
-  const serial = req.body.serial
   const status = req.body.status
-  const setor = req.body.setor
 
   try {
     await prisma.computador.update({
@@ -181,9 +182,7 @@ app.patch('/editarComputador/:id', async (req, res) => {
         idComputador: computerId
       },
       data:{
-        serialComputador: serial,
-        statusAtividade: status,
-        fkSetor: setor
+        statusAtividade: status
       }
     })
     res.status(200).send("Atualizado com sucesso")
