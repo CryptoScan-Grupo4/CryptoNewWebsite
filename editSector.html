@@ -180,7 +180,7 @@
     console.log(id)
 
     async function atualizarSetor(andar, codFuncionario) {
-      await axios.patch(`http://34.232.200.187:3000/editSector/${id}`, {
+      await axios.patch(`http://34.232.200.187:3000/editarSetor/${id}`, {
         andar: andar,
         codFuncionario: codFuncionario
     }).then((response) => {
