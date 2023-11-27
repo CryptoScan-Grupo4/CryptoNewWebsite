@@ -173,7 +173,7 @@
                     <td>${sector.funcionario.nomeFuncionario || ''}</td>
                     <td><a href="./editSector.html?id=${sector.idSetor}"><img src="img/edit.png" alt=""/></a></td>
                     <td>
-                        <img src="img/trash1.png" alt="" onclick="deleteSector(${Number(sector.idSetor), Number(sector.fkEmpresa)})">
+                        <img src="img/trash1.png" alt="" onclick="deleteSector(${sector.idSetor, sector.fkEmpresa})">
                     </td>
                 </tr>`
                 })
@@ -190,7 +190,7 @@
     try {
         await axios.delete('http://34.232.200.187:3000/deletarSetor', {
             data: {
-                id: id,
+                sectorId: id,
                 codEmp: codEmp
             }
         });
