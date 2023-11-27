@@ -168,7 +168,7 @@
         async function getComputer() {
     try {
         const response = await axios.get('http://34.232.200.187:3000/computer', []);
-        let computersHTML = '';
+        let computersHTML = ''
 
         response?.data.forEach((computer) => {
             computersHTML += `<tr>

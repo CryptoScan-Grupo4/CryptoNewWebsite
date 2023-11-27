@@ -140,34 +140,7 @@
                                 <th>Excluir</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1°</td>
-                                <td>Mineradora bitcoin</td>
-                                <td>Xampson</td>
-                                <td><img src="img/edit.png" alt=""></td>
-                                <td><img src="img/trash1.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>1°</td>
-                                <td>Mineradora bitcoin</td>
-                                <td>Javito</td>
-                                <td><img src="img/edit.png" alt=""></td>
-                                <td><img src="img/trash1.png" alt=""></td>
-
-
-
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>4°</td>
-                                <td>Mineradora bitcoin</td>
-                                <td>Xampson</td>
-                                <td><img src="img/edit.png" alt=""></td>
-                                <td><img src="img/trash1.png" alt=""></td>
-                            </tr>
+                        <tbody id="sectorsCreated">
 
                         </tbody>
                     </table>
@@ -185,9 +158,32 @@
 
     </div>
     <script src="script.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script>
         function createSector() {
             window.location = './cadastroSetor.html'
+        }
+
+        async function getSector () {
+            try {
+                const response = await axios.get('http://34.232.200.187:3000/sectors', []);
+                let sectorsHTML = ''
+
+                response?.data.forEach((sector) => {
+                    sectorsHTML += `<tr>
+                                <td>${sector.idSetor}</td>
+                                <td>${sector.Andar}°</td>
+                                <td>${sector.empresa.nomeEmpresa}</td>
+                                <td>${sector.funcionario.nomeFuncionario}</td>
+                                <td><img src="img/edit.png" alt=""></td>
+                                <td><img src="img/trash1.png" alt=""></td>
+                            </tr>`
+                });
+
+                sectorsCreated.innerHTML = sectorsHTML
+            } catch (error) {
+                console.log(error)
+            }
         }
     </script>
 </body>

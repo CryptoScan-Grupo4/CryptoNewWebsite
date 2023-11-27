@@ -122,6 +122,30 @@ app.get('/computer', async (req, res) => {
   }
 })
 
+app.get('/sector', async (req, res) => {
+  try {
+    const sectors = await prisma.setor.findMany({
+      select: {
+        idSetor: true,
+        Andar: true,
+        empresa: {
+          select: {
+            nomeEmpresa: true
+          }
+        },
+        funcionario: {
+          select: {
+            nomeFuncionario: true
+          }
+        }
+      }
+    })
+    res.status(200).send(sectors)
+  } catch (error) {
+    res.status(404).json(error)
+  }
+})
+
 app.patch('/esqueciSenha/:id', async (req, res) => {
   const userId = Number(req.params.id)
   const userEmail = req.body.email
