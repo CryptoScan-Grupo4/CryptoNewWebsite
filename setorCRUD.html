@@ -173,7 +173,7 @@
                     <td>${sector.funcionario.nomeFuncionario || ''}</td>
                     <td><a href="./editSector.html?id=${sector.idSetor}"><img src="img/edit.png" alt=""/></a></td>
                     <td>
-                        <img src="img/trash1.png" alt="" onclick="deleteSector(${Number(sector.idSetor)})">
+                        <img src="img/trash1.png" alt="" onclick="deleteSector(${Number(sector.idSetor), Number(sector.fkEmpresa)})">
                     </td>
                 </tr>`
                 })
@@ -186,9 +186,10 @@
 
         getSector()
 
-        async function deleteSector(id) {
+        async function deleteSector(id, codEmp) {
             await axios.delete('http://34.232.200.187:3000/deletarSetor', {
-                id: id
+                id: id,
+                codEmp: codEmp
             }).then((response) => {
                 console.log(response.data)
                 getSector()

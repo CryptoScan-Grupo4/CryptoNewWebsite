@@ -199,11 +199,13 @@ app.patch('/esqueciSenha/:id', async (req, res) => {
 
 app.delete('/deletarSetor', async (req, res) => {
   const sectorId = req.body.sectorId
+  const codEmp = req.body.codEmp
 
   try {
     await prisma.setor.delete({
       where: {
-        idSetor: sectorId
+        idSetor: sectorId,
+        fkEmpresa: codEmp
       }
     })
   } catch (error) {
