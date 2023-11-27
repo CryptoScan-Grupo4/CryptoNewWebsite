@@ -185,7 +185,7 @@
     async function editarComputador (serial, codSetor, status) {
         await axios.post(`http://34.232.200.187:3000/editarComputador/${id}`, {
         serial: serial,
-        codSetor: codSetor,
+        setor: codSetor,
         status: status
     }).then((response) => {
         window.location = './computadorCrud.html'
