@@ -204,8 +204,10 @@ app.delete('/deletarSetor', async (req, res) => {
   try {
     await prisma.setor.delete({
       where: {
-        idSetor: sectorId,
-        fkEmpresa: codEmp
+        idSetor_fkEmpresa: {
+          idSetor: sectorId,
+          fkEmpresa: codEmp
+        }
       }
     })
   } catch (error) {
