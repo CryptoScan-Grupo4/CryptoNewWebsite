@@ -116,7 +116,7 @@
 
 
         <div class="maincadastro">
-            <p class="titulo2">Cadastrar Computador</p>
+            <p class="titulo2">Editar Computador</p>
             <div class="campos1" style="top: 20%;">
 
                 <label for="Computador">Computador: </label>
@@ -136,8 +136,8 @@
             </div>
 
 
-            <div class="campos2" style="bottom: 9%;">
-                <label for="codEmpresa_input">Empresa:</label>
+            <div class="campos2" style="visibility: hidden;">
+                <label for="codEmpresa_input" style="visibility: hidden;">Empresa:</label>
                 <div class="input-div">
                     <input id="codEmpresa_input" placeholder="Insira o código da empresa">
                 </div>
@@ -155,7 +155,7 @@
             <button class="btn-cadastrar"
             style="bottom: 12%;"
                 onclick="editarComputador(serial_input.value, Number(setor_input.value), tipoStatus.value)">
-                Cadastrar
+                Editar computador
             </button>
 
         </div>
