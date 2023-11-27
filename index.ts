@@ -167,7 +167,30 @@ app.patch('/editarSetor/:id', async (req, res) => {
     res.status(304)
     console.log(error)
   }
+})
 
+app.patch('/editarComputador/:id', async (req, res) => {
+  const computerId = Number(req.params.id)
+  const serial = req.body.serial
+  const status = req.body.status
+  const setor = req.body.setor
+
+  try {
+    await prisma.computador.update({
+      where: {
+        idComputador: computerId
+      },
+      data:{
+        serialComputador: serial,
+        statusAtividade: status,
+        fkSetor: setor
+      }
+    })
+    res.status(200).send("Atualizado com sucesso")
+  } catch (error) {
+    res.status(304)
+    console.log(error)
+  }
 })
 
 app.patch('/esqueciSenha/:id', async (req, res) => {
