@@ -146,6 +146,29 @@ app.get('/sector', async (req, res) => {
   }
 })
 
+app.patch('/editarSetor/:id', async (req, res) => {
+  const sectorId = Number(req.params.id)
+  const andar = req.body.andar
+  const codFuncionario = req.body.funcionario
+
+  try {
+    await prisma.setor.update({
+      where: {
+        idSetor: sectorId
+      },
+      data: {
+        Andar: andar,
+        fkFuncionarioResponsavel: codFuncionario
+      }
+    })
+    res.status(200).send("Atualizado com sucesso")
+  } catch (error) {
+    res.status(304)
+    console.log(error)
+  }
+
+})
+
 app.patch('/esqueciSenha/:id', async (req, res) => {
   const userId = Number(req.params.id)
   const userEmail = req.body.email

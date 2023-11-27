@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br" dir="ltr">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <title>Setor</title>
-    <script src="../js/menu.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Funcionário</title>
+    <link rel="stylesheet" href="css/cadastroFuncionario.css">
+    <meta charset="UTF-8">
+    <script src="/js/menu.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/dashboard-cryptoScan.css">
-    <link rel="stylesheet" href="css/setor.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link href="/your-path-to-uicons/css/uicons-rounded-regular.css" rel="stylesheet">
-    <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
-    <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -47,7 +44,7 @@
                     <li><a href="#">Máquina 2</a></li>
                 </ul>
             </li>
-            <li>
+             <li>
                 <div class="iocn-link">
                     <a href="#">
                         <i class='bx bxs-business'></i>
@@ -116,76 +113,79 @@
             <i class='bx bx-menu'></i>
         </div>
 
-        <div class="container-crud">
 
-            <h1>Setor</h1>
 
-            <input placeholder="Pesquisar">
+        <div class="maincadastro">
+            <p class="titulo2">Cadastrar Setor</p>
+            <div class="campos1" style="top: 25%;">
 
-            <button onclick="createSector()">
-                Criar
+                <label for="andar_input">Andar: </label>
+                <div class="input-div">
+                    <input data-aos="fade-up" name="andar_setor" id="andar_input"
+                        placeholder="Insira o andar do setor">
+                    </input>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="campos2" style="bottom: -6%;">
+
+              <label for="empresa_input" style="visibility: hidden;">Empresa: </label>
+              <div class="input-div" style="visibility: hidden;">
+                  <input data-aos="fade-up" name="empresa_setor" id="empresa_input"
+                      placeholder="Insira o código da empresa">
+                  </input>
+                  <br>
+              </div>
+
+              <label for="funcionario_input">Funcionário: </label>
+              <div class="input-div">
+                  <input data-aos="fade-up" name="funcionario_setor" id="funcionario_input"
+                      placeholder="Insira o código da funcionário">
+                  </input>
+                  <br>
+              </div>
+            </div>
+
+
+            <button class="btn-cadastrar"
+              style="bottom: -26%;"
+                onclick="atualizarSetor(andar_input.value, Number(funcionario_input.value))">
+                Cadastrar Setor
             </button>
 
-            <div class="campo">
-
-                <div class="divTable-setor">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Andar</th>
-                                <th>Empresa</th>
-                                <th>Funcionário</th>
-                                <th>Editar</th>
-                                <th>Excluir</th>
-                            </tr>
-                        </thead>
-                        <tbody id="sectorsCreated">
-
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-
-            </div>
         </div>
-
-
-
     </section>
-
-    </div>
-    <script src="script.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <script>
-        function createSector() {
-            window.location = './cadastroSetor.html'
-        }
-
-        async function getSector() {
-            try {
-                const response = await axios.get('http://34.232.200.187:3000/sector', [])
-                let sectorsHTML = ''
-
-                response?.data.forEach((sector) => {
-                    sectorsHTML += `<tr>
-                    <td>${sector.idSetor}</td>
-                    <td>${sector.Andar}°</td>
-                    <td>${sector.empresa.nomeEmpresa}</td>
-                    <td>${sector.funcionario.nomeFuncionario || ''}</td>
-                    <td><a href="./editSector.html?id=${sector.idSetor}"><img src="img/edit.png" alt=""/></a></td>
-                    <td><img src="img/trash1.png" alt=""></td>
-                </tr>`
-                })
-
-                sectorsCreated.innerHTML = sectorsHTML
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
-        getSector()
-    </script>
 </body>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script>
+    let arrow = document.querySelectorAll(".arrow")
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement
+            arrowParent.classList.toggle("showMenu")
+        })
+    }
+    let sidebar = document.querySelector(".sidebar")
+    let sidebarBtn = document.querySelector(".bx-menu")
+    console.log(sidebarBtn)
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close")
+    });
+
+    var queryString = window.location.search
+    var params = new URLSearchParams(queryString)
+    var id = params.get('id')
+    console.log(id)
+
+    async function atualizarSetor(andar, codFuncionario) {
+      await axios.patch(`http://34.232.200.187:3000/editSector/${id}`, {
+        andar: andar,
+        codFuncionario: codFuncionario
+    }).then((response) => {
+      console.log(response.data);
+      window.location = './setorCRUD.html'
+    })
+    }
+</script>
