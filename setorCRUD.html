@@ -145,14 +145,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
-                <td>
-                    <button onclick="">
-                        <img src="img/trash1.png" alt="">
-                    </button>
-                </td>
-
             </div>
         </div>
 
@@ -180,7 +172,11 @@
                     <td>${sector.empresa.nomeEmpresa}</td>
                     <td>${sector.funcionario.nomeFuncionario || ''}</td>
                     <td><a href="./editSector.html?id=${sector.idSetor}"><img src="img/edit.png" alt=""/></a></td>
-                    <td><img src="img/trash1.png" alt=""></td>
+                    <td>
+                    <button onclick="deleteSector(${Number(sector.idSetor)})">
+                        <img src="img/trash1.png" alt="">
+                    </button>
+                    </td>
                 </tr>`
                 })
 
