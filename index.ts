@@ -97,6 +97,31 @@ app.get('/funcionario', async (req, res) => {
   }
 })
 
+app.get('/computer', async (req, res) => {
+  try {
+    const computers = await prisma.computador.findMany({
+      select: {
+        idComputador: true,
+        serialComputador: true,
+        statusAtividade: true,
+        empresa: {
+          select: {
+            nomeEmpresa: true
+          }
+        },
+        setor: {
+          select: {
+            Andar: true
+          }
+        }
+      }
+    })
+    res.status(200).send(computers)
+  } catch (error) {
+    res.status(404).json(error)
+  }
+})
+
 app.patch('/esqueciSenha/:id', async (req, res) => {
   const userId = Number(req.params.id)
   const userEmail = req.body.email

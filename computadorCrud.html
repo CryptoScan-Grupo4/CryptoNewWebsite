@@ -141,7 +141,7 @@
                                 <th>Excluir</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="createdComputers">
                             <tr>
                                 <td>1</td>
                                 <td>1°</td>
@@ -199,9 +199,32 @@
 
     </div>
     <script src="script.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script>
         function changePage () {
             window.location = './cadastroComputador.html'
         }
+
+        async function getComputer() {
+            try {
+                const response = await axios.get('http://34.232.200.187:3000/computer', [])
+                response?.data.map((computer) => (
+                    createdComputers.innerHTML = `<tr>
+                                <td>${computer.idComputador}</td>
+                                <td>${computer.serialComputador}</td>
+                                <td>${computer.statusAtividade}</td>
+                                <td>${computer.empresa.nomeEmpresa}</td>
+                                <td>${computer.setor.Andar}</td>
+                                <td><img src="../img/edit.png" alt=""></td>
+                                <td><img src="../img/trash1.png" alt=""></td>
+                            </tr>`
+                ))
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        getComputer()
+
     </script>
 </body>
