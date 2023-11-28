@@ -38,7 +38,7 @@ model componente {
 }
 
 model computador {
-  idComputador     Int     @unique @default(autoincrement())
+  idComputador     Int     @unique @id @default(autoincrement())
   serialComputador String? @db.VarChar(45)
   statusAtividade  String? @db.VarChar(10)
   fkEmpresa        Int
@@ -47,7 +47,6 @@ model computador {
   setor            setor?  @relation(fields: [fkSetor], references: [idSetor], onDelete: NoAction, onUpdate: NoAction, map: "computador_ibfk_2")
   setup            setup[]
 
-  @@id([idComputador, fkEmpresa])
   @@index([fkSetor], map: "fkSetor")
   @@index([fkEmpresa], map: "fkEmpresa")
 }
@@ -69,7 +68,7 @@ model empresa {
 }
 
 model setor {
-  idSetor                  Int          @unique @default(autoincrement())
+  idSetor                  Int          @unique @id @default(autoincrement())
   Andar                    String?      @db.VarChar(45)
   fkEmpresa                Int
   fkFuncionarioResponsavel Int?
@@ -77,7 +76,6 @@ model setor {
   funcionario              funcionario? @relation(fields: [fkFuncionarioResponsavel], references: [idFuncionario], onDelete: NoAction, onUpdate: NoAction, map: "setor_ibfk_1")
   empresa                  empresa      @relation(fields: [fkEmpresa], references: [idEmpresa], onUpdate: NoAction, map: "setor_ibfk_2")
 
-  @@id([idSetor, fkEmpresa])
   @@index([fkEmpresa], map: "fkEmpresa")
   @@index([fkFuncionarioResponsavel], map: "fkFuncionarioResponsavel")
 }
