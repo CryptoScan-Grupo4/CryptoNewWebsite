@@ -276,10 +276,10 @@
             response.data.forEach(data => {
                 soma += data._count.computador
                 const computador = data.computador.map(cpt => cpt)
-                const setup = computador.map(stp => stp.map(comp => comp))
+                const setup = data.computador
 
 
-                console.log(computador)
+                console.log(computador.map((cpt) => cpt.setup))
                 console.log(setup)
 
                 // tablesRows += `<tr>
