@@ -272,7 +272,7 @@ app.delete('/deletarSetor/:id', async (req, res) => {
     }
 
     await prisma.setor.delete({
-      where: { idSetor: sectorId },
+      where: { idSetor: existingSector.idSetor },
     });
 
     return res.status(200).json({ message: 'Setor excluído com sucesso.' });
