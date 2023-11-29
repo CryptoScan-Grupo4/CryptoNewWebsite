@@ -121,7 +121,7 @@
                 </div>
                 <div class="dunet">
                     <div class="dentro">
-                        <p id="qtd-setores">2</p>
+                        <p id="qtd-setores"></p>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                     <h1>Porcentagem de Uso da Rede</h1>
                 </div>
 
-                <p id="porcentagem-rede">12 <span>%</span></p>
+                <p id="porcentagem-rede"></p>
 
                 <div id="qtd-recebidos">
                     Recebidos:
@@ -158,7 +158,7 @@
                 </div>
                 <div class="dunet">
                     <div class="dentro">
-                        <p id="qtd-setores">7</p>
+                        <p id="qtd-setores"></p>
                     </div>
                 </div>
             </div>
@@ -191,12 +191,7 @@
                     <td>OK</td>
 
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="td-maquina"><a href="">477</a></td>
-                    <td>X</td>
 
-                </tr>
                 <tr>
                     <td>2</td>
                     <td class="td-maquina"><a href="">477</a></td>
@@ -250,7 +245,7 @@
         alert("foi")
     }
 </script> -->
-
+<script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
@@ -266,4 +261,14 @@
         sidebar.classList.toggle("close");
     });
     profile_name.innerHTML = sessionStorage.NOME_FUNCIONARIO
+
+    async function getMainData() {
+        try {
+           const response =  await axios.get('http://34.232.200.187:3000/painel', [])
+
+           console.log(response?.data)
+        } catch (error) {
+
+        }
+    }
 </script>
