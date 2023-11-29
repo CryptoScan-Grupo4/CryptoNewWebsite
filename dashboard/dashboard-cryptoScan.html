@@ -278,13 +278,14 @@
                 const computador = data.computador.map(cpt => cpt)
                 const setup = computador.map((cpt) => cpt.setup)
                 const componente = setup.map((stp) => stp[0])
-                const medidas = componente[0].componente
+                const medidas = componente[0].componente.map((medida) => medida.medida)
 
 
                 console.log(computador)
                 console.log(setup)
                 console.log(componente)
                 console.log(medidas)
+
 
                 // tablesRows += `<tr>
                 //     <td>${data.idSetor}</td>
