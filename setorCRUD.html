@@ -188,11 +188,7 @@
 
         async function deleteSector(id) {
             try {
-                await axios.delete('http://34.232.200.187:3000/deletarSetor', {
-                    data: {
-                        sectorId: id
-                    }
-                })
+                await axios.delete(`http://34.232.200.187:3000/deletarSetor/${id}`, {})
                 console.log('Setor deletado com sucesso!')
                 getSector()
             } catch (error) {
