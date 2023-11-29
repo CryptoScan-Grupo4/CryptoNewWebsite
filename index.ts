@@ -97,6 +97,41 @@ app.get('/funcionario', async (req, res) => {
   }
 })
 
+app.get('/painel', async (req, res) => {
+  try {
+    const painel = await prisma.setor.findMany({
+      select: {
+        _count: true,
+        idSetor: true,
+        computador:{
+          select: {
+            _count: true,
+            serialComputador: true,
+            setup:{
+              select:{
+                componente: {
+                  select:{
+                    medida: {
+                      where: {
+                        componente: {
+                          tipoComponente: "Internet"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+    res.status(200).send(painel)
+  } catch (error) {
+    console.error(error)
+  }
+})
+
 app.get('/computer', async (req, res) => {
   try {
     const computers = await prisma.computador.findMany({
@@ -222,16 +257,11 @@ app.patch('/esqueciSenha/:id', async (req, res) => {
 
 app.delete('/deletarSetor', async (req, res) => {
   const sectorId = req.body.sectorId
-  const codEmp = req.body.codEmp
 
   try {
     await prisma.setor.delete({
       where: {
-        idSetor: sectorId,
-        idSetor_fkEmpresa: {
-          idSetor: sectorId,
-          fkEmpresa: codEmp
-        }
+        idSetor: sectorId
       }
     })
   } catch (error) {
