@@ -277,7 +277,7 @@
                 soma += data._count.computador
                 const computador = data.computador.map(cpt => cpt)
                 const setup = computador.map((cpt) => cpt.setup)
-                const componente = setup.map((stp) => stp)
+                const componente = setup.map((stp) => stp.map(comp => comp))
 
 
                 console.log(computador)
