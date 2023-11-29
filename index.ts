@@ -256,20 +256,32 @@ app.patch('/esqueciSenha/:id', async (req, res) => {
 })
 
 app.delete('/deletarSetor/:id', async (req, res) => {
-  const sectorId = Number(req.params.id)
+  const sectorId = Number(req.params.id);
 
   try {
+    if (isNaN(sectorId) || sectorId <= 0) {
+      return res.status(400).json({ error: 'ID de setor inválido.' });
+    }
+
+    const existingSector = await prisma.setor.findUnique({
+      where: { idSetor: sectorId },
+    });
+
+    if (!existingSector) {
+      return res.status(404).json({ error: 'Setor não encontrado.' });
+    }
+
     await prisma.setor.delete({
-      where: {
-        idSetor: sectorId
-      }
-    })
-    res.status(200)
+      where: { idSetor: sectorId },
+    });
+
+    return res.status(200).json({ message: 'Setor excluído com sucesso.' });
   } catch (error) {
-    res.status(304)
-    console.error(error)
+    console.error(error);
+    return res.status(500).json({ error: 'Erro interno do servidor.' });
   }
-})
+});
+
 
 app.delete('/deletarUsuario/:id', async (req, res) => {
   const userId = Number(req.params.id)
