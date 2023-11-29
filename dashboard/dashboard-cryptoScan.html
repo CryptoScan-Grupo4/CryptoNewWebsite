@@ -267,6 +267,7 @@
         try {
 
             let soma = 0
+            let tablesRows = ''
             const response = await axios.get('http://34.232.200.187:3000/painel', [])
 
             console.log(response.data)
@@ -274,6 +275,15 @@
 
             response.data.forEach(data => {
                 soma += data._count.computador
+                const computador = data.computador.map(computador => computador)
+
+                console.log(computador)
+
+                tablesRows += `<tr>
+                    <td>${data.idSetor}</td>
+                    <td class="td-maquina">${computador.serialComputador}</td>
+                    <td></td>
+                     </tr>`
             })
             qtd_maquinas.innerHTML = soma
         } catch (error) {
