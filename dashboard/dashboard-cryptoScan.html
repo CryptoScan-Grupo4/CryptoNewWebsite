@@ -44,7 +44,7 @@
                     <li><a href="#">Máquina 2</a></li>
                 </ul>
             </li>
-             <li>
+            <li>
                 <div class="iocn-link">
                     <a href="#">
                         <i class='bx bxs-business'></i>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="dunet">
                     <div class="dentro">
-                        <p id="qtd-setores"></p>
+                        <p id="qtd_maquinas"></p>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,8 @@
                         <th class="setor">Setor</th>
                         <th>Serial da máquina</th>
                         <th class="situacao">Situação <i class='bx bx-info-circle' id="tooltip">
-                                <span class="tooltiptext">Uma máquina com o indicador vermelho 🔴 é um alerta de <b>mau</b>
+                                <span class="tooltiptext">Uma máquina com o indicador vermelho 🔴 é um alerta de
+                                    <b>mau</b>
                                     funcionamento em algum componente. <br>
                                     <b> Recomendamos dar uma olhada! </b>
                                 </span>
@@ -247,27 +248,34 @@
 </script> -->
 <script src="../node_modules/axios/dist/axios.min.js"></script>
 <script>
-    let arrow = document.querySelectorAll(".arrow");
+    let arrow = document.querySelectorAll(".arrow")
     for (var i = 0; i < arrow.length; i++) {
         arrow[i].addEventListener("click", (e) => {
-            let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-            arrowParent.classList.toggle("showMenu");
-        });
+            let arrowParent = e.target.parentElement.parentElement//selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu")
+        })
     }
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
+    let sidebar = document.querySelector(".sidebar")
+    let sidebarBtn = document.querySelector(".bx-menu")
+    console.log(sidebarBtn)
     sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-    });
+        sidebar.classList.toggle("close")
+    })
     profile_name.innerHTML = sessionStorage.NOME_FUNCIONARIO
 
     async function getMainData() {
         try {
-           const response =  await axios.get('http://34.232.200.187:3000/painel', [])
 
-           console.log(response.data)
-           qtd_setores.innerHTML = response.data.length
+            let soma = 0
+            const response = await axios.get('http://34.232.200.187:3000/painel', [])
+
+            console.log(response.data)
+            qtd_setores.innerHTML = response.data.length
+
+            response.data.forEach(data => {
+                soma += data._count
+            })
+            qtd_maquinas.innerHTML = soma
         } catch (error) {
             console.error(error)
         }
