@@ -273,7 +273,7 @@
             qtd_setores.innerHTML = response.data.length
 
             response.data.forEach(data => {
-                soma += data._count
+                soma += data._count.computador
             })
             qtd_maquinas.innerHTML = soma
         } catch (error) {
