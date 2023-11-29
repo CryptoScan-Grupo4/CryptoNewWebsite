@@ -121,7 +121,7 @@
                 </div>
                 <div class="dunet">
                     <div class="dentro">
-                        <p id="qtd-setores"></p>
+                        <p id="qtd_setores"></p>
                     </div>
                 </div>
             </div>
@@ -267,6 +267,7 @@
            const response =  await axios.get('http://34.232.200.187:3000/painel', [])
 
            console.log(response.data)
+           qtd_setores.innerHTML = response.data.length
         } catch (error) {
             console.error(error)
         }
