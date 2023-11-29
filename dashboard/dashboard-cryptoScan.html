@@ -276,8 +276,8 @@
             response.data.forEach(data => {
                 soma += data._count.computador
                 const computador = data.computador.map(computador => computador)
-                const setup = computador.setup.map(setup => setup)
-                const componente = setup.componente.map(componente => componente)
+                const setup = computador.setup.map(stp => stp)
+                const componente = setup.componente.map(comp => comp)
 
                 console.log(computador)
                 console.log(setup)
