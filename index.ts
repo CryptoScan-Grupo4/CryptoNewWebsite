@@ -111,18 +111,18 @@ app.get('/painel', async (req, res) => {
               select:{
                 componente: {
                   select:{
-                    medida: {
-                      where: {
-                        componente: {
-                          tipoComponente: "Internet"
-                        }
-                      }
-                    }
+                    tipoComponente: true,
+                    medida: true
                   }
                 }
               }
             }
           }
+        }
+      },
+      where: {
+        empresa: {
+          idEmpresa: 1
         }
       }
     })
