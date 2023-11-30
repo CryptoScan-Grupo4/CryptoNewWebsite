@@ -270,7 +270,6 @@
             let tablesRows = ''
             const response = await axios.get('http://34.232.200.187:3000/painel', [])
 
-            console.log(response.data)
             qtd_setores.innerHTML = response.data.length
 
             response.data.forEach(data => {
@@ -282,7 +281,7 @@
                 const medidasCapturadas = medidas.map(ult => ult)
 
 
-                console.log(setup[0])
+                console.log(computador[0])
 
 
                 const status = medidasCapturadas
