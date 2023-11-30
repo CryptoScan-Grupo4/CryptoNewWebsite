@@ -285,16 +285,15 @@
                 console.log(computador)
                 console.log(setup)
                 console.log(componente)
-                console.log(medidasCapturadas.map(mds => mds.medida))
+                console.log(medidasCapturadas.map(mds => mds))
 
                 const status = medidasCapturadas
 
 
-                // tablesRows += `<tr>
-                //     <td>${data.idSetor}</td>
-                //     <td class="td-maquina">${computador.serialComputador}</td>
-                //     <td></td>
-                //      </tr>`
+                tablesRows += `<tr>
+                    <td>${data.idSetor}</td>
+                    <td class="td-maquina">${computador.serialComputador}</td>
+                     </tr>`
             })
             qtd_maquinas.innerHTML = soma
         } catch (error) {
