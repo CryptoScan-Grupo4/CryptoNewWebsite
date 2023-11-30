@@ -186,7 +186,7 @@
                     </tr>
                 </thead>
 
-                <tr>
+                <!-- <tr>
                     <td>1</td>
                     <td class="td-maquina"><a href="cards.html">455</a></td>
                     <td>OK</td>
@@ -224,10 +224,10 @@
                     <td class="td-maquina"><a href="">477</a></td>
                     <td>OK</td>
 
-                </tr>
+                </tr> -->
+                <tbody id="mainTableDatas">
 
-
-
+                </tbody>
 
             </table>
         </div>
@@ -296,6 +296,7 @@
                      </tr>`
             })
             qtd_maquinas.innerHTML = soma
+            mainTableDatas.innerHTML = tablesRows
         } catch (error) {
             console.error(error)
         }
