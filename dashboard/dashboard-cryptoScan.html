@@ -264,36 +264,40 @@
     profile_name.innerHTML = sessionStorage.NOME_FUNCIONARIO
 
     async function getMainData() {
-    try {
-        let soma = 0;
-        let tablesRows = '';
-        const response = await axios.get('http://34.232.200.187:3000/painel', []);
+        try {
 
-        qtd_setores.innerHTML = response.data.length;
+            let soma = 0
+            let tablesRows = ''
+            const response = await axios.get('http://34.232.200.187:3000/painel', [])
 
-        response.data.forEach(data => {
-            soma += data._count.computador;
-            const computador = data.computador;
+            qtd_setores.innerHTML = response.data.length
 
-            computador.forEach(cpt => {
-                const serialComputador = cpt.serialComputador;
-                const medidas = cpt.setup.componente.map(comp => comp.medida);
-                console.log(medidas)
+            response.data.forEach(data => {
+                soma += data._count.computador
+                const computador = data.computador.map(cpt => cpt)
+                const setup = computador.map((cpt) => cpt.setup)
+                const componente = setup.map((stp) => stp[0])
+                const medidas = componente[0].componente.map((medida) => medida.medida)
+                const medidasCapturadas = medidas.map(ult => ult)
+
+
+                console.log(computador[0])
+
+
+                const status = medidasCapturadas
+
 
                 tablesRows += `<tr>
                     <td>${data.idSetor}</td>
-                    <td class="td-maquina">${serialComputador}</td>
-                    <td class="td-medidas">${medidas.join(', ')}</td>
-                </tr>`;
-            });
-        });
-
-        qtd_maquinas.innerHTML = soma;
-        mainTableDatas.innerHTML = tablesRows;
-    } catch (error) {
-        console.error('Erro ao obter dados principais:', error);
+                    <td class="td-maquina">${computador[0].serialComputador}</td>
+                     </tr>`
+            })
+            qtd_maquinas.innerHTML = soma
+            mainTableDatas.innerHTML = tablesRows
+        } catch (error) {
+            console.error(error)
+        }
     }
-}
 
     getMainData()
 </script>
