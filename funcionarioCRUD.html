@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Computador</title>
-    <link rel="stylesheet" href="./css/cadastroComputador.css">
-    <meta charset="UTF-8">
-    <script src="/js/menu.js"></script>
+    <title>Funcionario</title>
+    <script src="../js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard-cryptoScan.css">
+    <link rel="stylesheet" href="css/funcionario.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/your-path-to-uicons/css/uicons-rounded-regular.css" rel="stylesheet">
+    <link href="/your-path-to-uicons/css/uicons-rounded-bold.css" rel="stylesheet">
+    <link href="/your-path-to-uicons/css/uicons-rounded-solid.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -40,7 +43,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Setor 1</a></li>
-                    <li><a href="./dashboardMonitoramento.html">Máquina 1</a></li>
+                    <li><a href="./dashboard/dashboardMonitoramento.html">Máquina 1</a></li>
                     <li><a href="#">Máquina 2</a></li>
                 </ul>
             </li>
@@ -70,21 +73,21 @@
                 </ul>
             </li>
             <li>
-                <a href="../setorCRUD.html">
+                <a href="setorCRUD.html">
                     <i class='bx bx-user'></i>
                     <span class="link_name">Cadastrar Setor</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="../setorCRUD.html">Cadastrar Setor</a></li>
+                    <li><a class="link_name" href="setorCRUD.html">Cadastrar Setor</a></li>
                 </ul>
             </li>
             <li>
-                <a href="../computadorCrud.html">
+                <a href="computadorCrud.html">
                     <i class='bx bx-user'></i>
                     <span class="link_name">Cadastrar Computador</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="../computadorCrud.html">Cadastrar Computador</a></li>
+                    <li><a class="link_name" href="computadorCrud.html">Cadastrar Computador</a></li>
                 </ul>
             </li>
             <li>
@@ -113,80 +116,41 @@
             <i class='bx bx-menu'></i>
         </div>
 
+        <div class="container-crud">
 
+            <h1>Funcionário</h1>
 
-        <div class="maincadastro">
-            <p class="titulo2">Cadastrar Computador</p>
-            <div class="campos1" style="top: 20%;">
+            <input placeholder="Pesquisar">
 
-                <label for="Computador">Computador: </label>
-                <label for="serial_input">Serial:</label>
-                <div class="input-div">
-                    <input data-aos="fade-up" name="Serial" id="serial_input" placeholder="Insira o Serial Number do computador">
-                    </input>
-                    <br>
-                </div>
-
-                <label for="Setor">Setor:</label>
-                <div class="input-div">
-                    <input type="setor" name="setor" id="setor_input" placeholder="Insira o código do setor">
-                    </input>
-                    <br>
-                </div>
-            </div>
-
-
-            <div class="campos2" style="bottom: 9%;">
-                <label for="codEmpresa_input">Empresa:</label>
-                <div class="input-div">
-                    <input id="codEmpresa_input" placeholder="Insira o código da empresa">
-                </div>
-
-                <select name="tipoStatus" id="tipoStatus" style="width: 51%">
-                    <option >--Selecione o tipo do Status--</option>
-                    <option value="On">Ativo</option>
-                    <option value="Off">Inativo</option>
-                </select>
-            </div>
-
-
-            <div class="container-select" style="visibility: hidden;"></div>
-
-            <button class="btn-cadastrar"
-            style="bottom: 12%;"
-                onclick="cadastrarComputador(serial_input.value, Number(codEmpresa_input.value), Number(setor_input.value), tipoStatus.value)">
-                Cadastrar
+            <button onclick="createSector()">
+                Criar
             </button>
 
+            <div class="campo">
+
+                <div class="divTable-setor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Tipo da Conta</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sectorsCreated">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+
+
     </section>
+
+    </div>
+     
 </body>
-
-<script src="./node_modules/axios/dist/axios.min.js"></script>
-<script>
-    let arrow = document.querySelectorAll(".arrow")
-    for (var i = 0; i < arrow.length; i++) {
-        arrow[i].addEventListener("click", (e) => {
-            let arrowParent = e.target.parentElement.parentElement//selecting main parent of arrow
-            arrowParent.classList.toggle("showMenu")
-        })
-    }
-    let sidebar = document.querySelector(".sidebar")
-    let sidebarBtn = document.querySelector(".bx-menu")
-    console.log(sidebarBtn)
-    sidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close")
-    });
-
-    async function cadastrarComputador (serial, codEmp, codSetor, status) {
-        await axios.post('http://34.232.200.187:3000/cadastrarComputador', {
-        serial: serial,
-        codEmp: codEmp,
-        codSetor: codSetor,
-        status: status
-    }).then((response) => {
-        window.location = './computadorCrud.html'
-      console.log(response.data);
-    })
-    }
-</script>

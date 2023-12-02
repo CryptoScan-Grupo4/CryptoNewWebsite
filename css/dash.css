@@ -76,6 +76,11 @@ aside .container_centralizado{
   text-align: center;
 }
 
+/* .graficos_da_esquerda{
+  width: 500px;
+  height: 621px;
+} */
+
 .graficos {
   display: flex;
 }
@@ -101,6 +106,7 @@ aside .container_centralizado{
   margin: 20px;
   /* Adicione um espaçamento entre os gráficos */
   justify-content: center;
+  width: 500px;
 }
 
 .container-avisos{
@@ -760,3 +766,5 @@ body {
 #tooltipDisco:hover .tooltiptext {
   visibility: visible;
 }
+
+
