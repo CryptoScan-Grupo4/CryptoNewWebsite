@@ -112,7 +112,11 @@ app.get('/painel', async (req, res) => {
                 componente: {
                   select:{
                     tipoComponente: true,
-                    medida: true
+                    medida: {
+                      orderBy: {
+                        dataHoraMedida: 'desc'
+                      }
+                    }
                   }
                 }
               }
@@ -365,7 +369,7 @@ app.get('/dadosGpu', async (req, res) => {
     const gpuData = await prisma.medida.findMany({
       where: {
         componente: {
-          tipoComponente: "GPU"
+          tipoComponente: "Placa de video"
         }
       },
       orderBy:{
