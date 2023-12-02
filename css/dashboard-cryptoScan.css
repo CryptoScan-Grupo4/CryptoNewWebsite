@@ -394,7 +394,7 @@ body {
   position: relative;
 }
 
-#porcentagem-rede{
+#porcentagemRede{
   color: white;
   font-size: 80px;
   position: relative;
@@ -402,7 +402,7 @@ body {
   top: 32px;
 }
 
-#porcentagem-rede span{
+#porcentagemRede span{
   color: white;
   font-size: 50px;
   position: relative;
@@ -425,7 +425,7 @@ body {
   bottom: 20%;
 }
 
-#qtd-recebidos span{
+#downloadData{
   color: #f0b90b;
   font-size: 20px;
   position: relative;
@@ -433,7 +433,7 @@ body {
 }
 
 
-#qtd-enviados span{
+#uploadData{
   color: #f0b90b;
   font-size: 20px;
   position: relative;
