@@ -133,17 +133,17 @@
                     <h1>Porcentagem de Uso da Rede</h1>
                 </div>
 
-                <p id="porcentagem-rede"></p>
+                <p id="porcentagemRede"></p>
 
                 <div id="qtd-recebidos">
                     Recebidos:
-                    <span>
+                    <span id="downloadData">
                         16,50
                     </span>
                 </div>
                 <div id="qtd-enviados">
                     Enviados:
-                    <span>
+                    <span id="uploadData">
                         16,50
                     </span>
                 </div>
@@ -265,8 +265,10 @@
 
     async function getMainData() {
         try {
-
             let soma = 0
+            let download = 0
+            let upload = 0
+            let usoRede = 0
             let tablesRows = ''
             const response = await axios.get('http://34.232.200.187:3000/painel', [])
 
@@ -275,29 +277,57 @@
             response.data.forEach(data => {
                 soma += data._count.computador
                 const computador = data.computador.map(cpt => cpt)
-                const setup = computador.map((cpt) => cpt.setup)
-                const componente = setup.map((stp) => stp[0])
-                const medidas = componente[0].componente.map((medida) => medida.medida)
-                const medidasCapturadas = medidas.map(ult => ult)
+
+                for (let index = 0; index < computador.length; index++) {
+                    const serialComputador = computador[index].serialComputador
+                    const setup = computador[index].setup
+
+                    let status = "OK"
+
+                    for (let setupI = 0; setupI < setup.length; setupI++) {
+                        const componente = setup[setupI].componente
+
+                        for (let componenteI = 0; componenteI < componente.length; componenteI++) {
+                            const medida = componente[componenteI].medida
+                            const tipoComponente = componente[componenteI].tipoComponente
+                            const ultimaMedida = medida[medida.length - 1]
 
 
-                console.log(computador[0])
+                            if (ultimaMedida >= 90) {
+                                status = "&#128308;"
+                            }
 
+                            if (tipoComponente === "Internet - Download" || tipoComponente === "Internet - Upload") {
+                                if (tipoComponente === "Internet - Download") {
+                                    download = parseInt(ultimaMedida.medida / 100000)
+                                } else {
+                                    upload = parseInt(ultimaMedida.medida / 100000)
+                                }
+                                usoRede = (download + upload) / 100
+                            }
+                        }
+                    }
 
-                const status = medidasCapturadas
-
-
-                tablesRows += `<tr>
+                    tablesRows += `<tr>
                     <td>${data.idSetor}</td>
-                    <td class="td-maquina">${computador[0].serialComputador}</td>
-                     </tr>`
+                    <td class="td-maquina">${serialComputador}</td>
+                    <td class="statusTable">${status}</td>
+                </tr>`
+                }
             })
+
+            console.log("Executando...")
             qtd_maquinas.innerHTML = soma
             mainTableDatas.innerHTML = tablesRows
+            porcentagemRede.innerHTML = usoRede
+            downloadData.innerHTML = download
+            uploadData.innerHTML = upload
         } catch (error) {
             console.error(error)
         }
     }
 
     getMainData()
+    setInterval(getMainData, 3000)
+
 </script>
