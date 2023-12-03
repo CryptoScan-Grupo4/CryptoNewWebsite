@@ -136,6 +136,29 @@ app.get('/painel', async (req, res) => {
   }
 })
 
+app.get('/funcionariosData', async (req, res) => {
+  try {
+    const funcionarios = await prisma.funcionario.findMany({
+      select: {
+        idFuncionario: true,
+        nomeFuncionario: true,
+        emailFuncionario: true,
+        tipoconta: {
+          select: {
+            tipoConta: true
+          }
+        }
+      },
+      where: {
+        fkEmpresa: 1
+      }
+    })
+    res.status(200).send(funcionarios)
+  } catch (error) {
+    res.status(404).json(error)
+  }
+})
+
 app.get('/computer', async (req, res) => {
   try {
     const computers = await prisma.computador.findMany({
