@@ -156,6 +156,10 @@
 </body>
 <script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
+    function switchPage() {
+        window.location = './cadastroFuncionario.html'
+    }
+
     async function getEmployeesList () {
         try {
             const response = await axios.get('http://34.232.200.187:3000/funcionariosData', [])
