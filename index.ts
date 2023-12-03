@@ -24,7 +24,7 @@ app.post('/cadastrarFuncionario', async (req, res) => {
   const senha = req.body.senha
   const cpf = req.body.cpf
   const codEmp = req.body.codEmp
-  const tipoConta = 1
+  const tipoConta = req.body.tipoConta ?? 1
 
   if (nome === "" || email === "" || senha === "" || cpf === "" || codEmp === "") {
     res.status(400).json("Preencha os campos corretamente")
@@ -231,6 +231,27 @@ app.patch('/editarSetor/:id', async (req, res) => {
   } catch (error) {
     res.status(304)
     console.log(error)
+  }
+})
+
+app.patch('/editarFuncionario/:id', async (req, res) => {
+  const funcID = Number(req.params.id)
+  const email = req.body.email
+  const tipoConta = req.body.tipoConta
+
+  try {
+    await prisma.funcionario.update({
+      where:{
+        idFuncionario: funcID
+      },
+      data: {
+        emailFuncionario: email,
+        fkTipoConta: tipoConta
+      }
+    })
+    res.status(200).send("Atualizado com sucesso")
+  } catch (error) {
+    res.status(304).send(error)
   }
 })
 
