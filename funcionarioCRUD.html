@@ -160,6 +160,7 @@
         try {
             const response = await axios.get('http://34.232.200.187:3000/funcionariosData', [])
             let funcHTML = ''
+            console.log(response.data)
 
             response.data?.forEach((employee) => {
                 funcHTML += `<tr>
