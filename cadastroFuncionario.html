@@ -185,7 +185,7 @@
             </div>
 
             <button class="btn-cadastrar"
-                onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value))">
+                onclick="cadastrarFuncionario(nome_input.value, rgtEmail_input.value, rgtSenha_input.value, repetir_senha_input.value, cpf_input.value, Number(codEmp_input.value), Number(tipoConta.value))">
                 Cadastrar
             </button>
 
@@ -206,4 +206,22 @@
     sidebarBtn.addEventListener("click", () => {
         sidebar.classList.toggle("close")
     });
+
+    async function cadastrarFuncionario(nome, email, senha, repetirSenha, cpf, codEmp, tipoConta) {
+  if (senha === repetirSenha) {
+    await axios.post('http://34.232.200.187:3000/cadastrarFuncionario', {
+      nome: nome,
+      email: email,
+      senha: senha,
+      cpf: cpf,
+      codEmp: codEmp,
+      tipoConta: tipoConta
+    }).then((response) => {
+      console.log(response.data);
+      window.location = './funcionarioCRUD.html'
+    })
+  } else {
+    alert("As senhas não estão iguais")
+  }
+}
 </script>
