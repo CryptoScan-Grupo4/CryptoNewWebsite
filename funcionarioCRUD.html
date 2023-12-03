@@ -140,7 +140,7 @@
                                 <th>Excluir</th>
                             </tr>
                         </thead>
-                        <tbody id="sectorsCreated">
+                        <tbody id="employeesCreated">
 
                         </tbody>
                     </table>
@@ -152,5 +152,29 @@
     </section>
 
     </div>
-     
+
 </body>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script>
+    async function getEmployeesList () {
+        try {
+            const response = await axios.get('http://34.232.200.187:3000/funcionariosData', [])
+            let funcHTML = ''
+
+            response.data?.forEach((employee) => {
+                funcHTML += `<tr>
+                    <td>${employee.idFuncionario}</td>
+                    <td>${employee.nomeFuncionario}</td>
+                    <td>${employee.emailFuncionario}</td>
+                    <td>${employee.tipoconta.tipoconta}</td>
+                    <td><a href="#"><img src="img/edit.png" alt=""/></a></td>
+                    <td><img src="../img/trash1.png" alt=""></td>
+                </tr>`
+            });
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    getEmployeesList()
+</script>
