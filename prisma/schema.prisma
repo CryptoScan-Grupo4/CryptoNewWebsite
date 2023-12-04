@@ -16,6 +16,7 @@ model funcionario {
   Senha            String?   @db.VarChar(45)
   fkTipoConta      Int
   fkEmpresa        Int?
+  isActive         Boolean?  @default(true, map: "DF__funcionar__isAct__52E34C9D")
   empresa          empresa?  @relation(fields: [fkEmpresa], references: [idEmpresa], onDelete: NoAction, onUpdate: NoAction, map: "funcionario_ibfk_1")
   tipoconta        tipoconta @relation(fields: [fkTipoConta], references: [idTipoConta], onUpdate: NoAction, map: "funcionario_ibfk_2")
   setor            setor[]
@@ -38,7 +39,7 @@ model componente {
 }
 
 model computador {
-  idComputador     Int     @unique @id @default(autoincrement())
+  idComputador     Int     @id @unique @default(autoincrement())
   serialComputador String? @db.VarChar(45)
   statusAtividade  String? @db.VarChar(10)
   fkEmpresa        Int
@@ -68,7 +69,7 @@ model empresa {
 }
 
 model setor {
-  idSetor                  Int          @unique @id @default(autoincrement())
+  idSetor                  Int          @id @unique @default(autoincrement())
   Andar                    String?      @db.VarChar(45)
   fkEmpresa                Int
   fkFuncionarioResponsavel Int?

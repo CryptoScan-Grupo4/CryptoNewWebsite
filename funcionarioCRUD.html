@@ -160,7 +160,7 @@
         window.location = './cadastroFuncionario.html'
     }
 
-    async function getEmployeesList () {
+    async function getEmployeesList() {
         try {
             const response = await axios.get('http://34.232.200.187:3000/funcionariosData', [])
             let funcHTML = ''
@@ -173,14 +173,21 @@
                     <td>${employee.emailFuncionario}</td>
                     <td>${employee.tipoconta.tipoConta}</td>
                     <td><a href="./editEmployee.html?id=${employee.idFuncionario}"><img src="img/edit.png" alt=""/></a></td>
-                    <td><img src="../img/trash1.png" alt=""></td>
+                    <td><img src="../img/trash1.png" alt="" onclick="deleteEmployee(${employee.idFuncionario})"></td>
                 </tr>`
-            });
+            })
 
             employeesCreated.innerHTML = funcHTML
         } catch (error) {
             console.error(error)
         }
+    }
+
+    async function deleteEmployee(id) {
+        await axios.patch(`http://34.232.200.187:3000/deletarFuncionario/${id}`, {}).then((response) => {
+            console.log(response)
+            getEmployeesList()
+        })
     }
 
     getEmployeesList()

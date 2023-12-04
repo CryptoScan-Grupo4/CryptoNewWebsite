@@ -150,7 +150,8 @@ app.get('/funcionariosData', async (req, res) => {
         }
       },
       where: {
-        fkEmpresa: 1
+        fkEmpresa: 1,
+        isActive: true
       }
     })
     res.status(200).send(funcionarios)
@@ -250,6 +251,24 @@ app.patch('/editarFuncionario/:id', async (req, res) => {
       }
     })
     res.status(200).send("Atualizado com sucesso")
+  } catch (error) {
+    res.status(304).send(error)
+  }
+})
+
+app.patch('/deletarFuncionario/:id', async (req, res) => {
+  const funcID = Number(req.params.id)
+
+  try {
+    await prisma.funcionario.update({
+      where: {
+        idFuncionario: funcID
+      },
+      data: {
+        isActive: false
+      }
+    })
+    res.status(204).send("Deletado com sucesso")
   } catch (error) {
     res.status(304).send(error)
   }
